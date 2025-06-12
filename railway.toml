@@ -1,5 +1,6 @@
 [build]
 builder = "dockerfile"
+buildCommand = "docker build --no-cache --progress=plain ."
 
 [deploy]
 healthcheckPath = "/api/health"
@@ -8,4 +9,4 @@ restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10
 
 [environments.production]
-variables = { NODE_ENV = "production" }
+variables = { NODE_ENV = "production", NPM_CONFIG_CACHE = "/tmp/.npm" }
