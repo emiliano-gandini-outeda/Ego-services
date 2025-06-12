@@ -2,4 +2,10 @@
 builder = "dockerfile"
 
 [deploy]
-startCommand = "npm start"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 600
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+
+[environments.production]
+variables = { NODE_ENV = "production", NPM_CONFIG_REGISTRY = "https://registry.yarnpkg.com/" }

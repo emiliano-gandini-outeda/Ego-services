@@ -1,16 +1,25 @@
-# Use the official Node.js image
-FROM node:18
+FROM node:18-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy package.json
+# Install system dependencies
+RUN apk add --no-cache libc6-compat
+
+# Copy package files
 COPY package.json ./
+COPY .npmrc ./
 
-# Install dependencies with minimal flags
-RUN npm install --loglevel verbose
+# Configure npm for better reliability
+RUN npm config set registry https://registry.yarnpkg.com/ && \
+    npm config set fetch-retries 10 && \
+    npm config set fetch-retry-factor 3 && \
+    npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000
 
-# Copy the rest of the code
+# Install dependencies with retries
+RUN npm install --verbose || npm install --verbose || npm install --verbose
+
+# Copy source code
 COPY . .
 
 # Build the application
