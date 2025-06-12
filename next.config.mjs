@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
   images: {
     domains: ['blob.v0.dev'],
     unoptimized: true,
@@ -10,9 +12,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Uncomment for static export
-  // output: 'export',
-  // trailingSlash: true,
 }
 
 export default nextConfig

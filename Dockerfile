@@ -6,14 +6,14 @@ RUN npm install -g pnpm
 # Set working directory
 WORKDIR /app
 
-# Copy pnpm files
-COPY package.json pnpm-lock.yaml* .pnpmrc ./
+# Copy package.json first
+COPY package.json ./
 
-# Install dependencies with pnpm
+# Generate pnpm-lock.yaml and install dependencies
 RUN pnpm config set registry https://registry.npmjs.org/ && \
     pnpm config set network-timeout 300000 && \
     pnpm config set fetch-retries 10 && \
-    pnpm install --frozen-lockfile --prefer-offline
+    pnpm install --no-frozen-lockfile
 
 # Copy source code
 COPY . .
