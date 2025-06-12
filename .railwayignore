@@ -1,2 +1,2 @@
-nixpacks.toml
-.nixpacks/
+railway.toml
+Dockerfile
