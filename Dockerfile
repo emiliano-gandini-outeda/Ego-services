@@ -1,32 +1,28 @@
-FROM node:18-alpine
+FROM node:18-alpine AS base
 
+# Install pnpm
+RUN npm install -g pnpm
+
+# Set working directory
 WORKDIR /app
 
-# Install system dependencies
-RUN apk add --no-cache libc6-compat
+# Copy pnpm files
+COPY package.json pnpm-lock.yaml* .pnpmrc ./
 
-# Copy package files
-COPY package.json ./
-COPY .npmrc ./
-
-# Configure npm for better reliability
-RUN npm config set registry https://registry.yarnpkg.com/ && \
-    npm config set fetch-retries 10 && \
-    npm config set fetch-retry-factor 3 && \
-    npm config set fetch-retry-mintimeout 20000 && \
-    npm config set fetch-retry-maxtimeout 120000
-
-# Install dependencies with retries
-RUN npm install --verbose || npm install --verbose || npm install --verbose
+# Install dependencies with pnpm
+RUN pnpm config set registry https://registry.npmjs.org/ && \
+    pnpm config set network-timeout 300000 && \
+    pnpm config set fetch-retries 10 && \
+    pnpm install --frozen-lockfile --prefer-offline
 
 # Copy source code
 COPY . .
 
 # Build the application
-RUN npm run build
+RUN pnpm build
 
 # Expose port
 EXPOSE 3000
 
 # Start the application
-CMD ["npm", "start"]
+CMD ["pnpm", "start"]

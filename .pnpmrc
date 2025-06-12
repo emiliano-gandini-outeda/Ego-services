@@ -1,0 +1,11 @@
+registry=https://registry.npmjs.org/
+store-dir=~/.pnpm-store
+cache-dir=~/.pnpm-cache
+state-dir=~/.pnpm-state
+auto-install-peers=true
+strict-peer-dependencies=false
+network-timeout=300000
+fetch-retries=10
+fetch-retry-factor=3
+fetch-retry-mintimeout=30000
+fetch-retry-maxtimeout=300000

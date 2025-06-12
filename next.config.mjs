@@ -10,6 +10,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Uncomment for static export
+  // output: 'export',
+  // trailingSlash: true,
 }
 
 export default nextConfig
