@@ -19,6 +19,20 @@ export default function ContactPage() {
     window.scrollTo(0, 0)
   }, [])
 
+  // Default why items if translation is not available
+  const whyItems = [
+    "Customized solutions for your specific needs",
+    "Scalable tools that grow with your organization",
+    "Expert support and guidance",
+    "Proven experience with small-medium businesses",
+  ]
+
+  // Safely get the translated why items, falling back to default if not an array
+  const getWhyItems = () => {
+    const translated = t("about.whyItems")
+    return Array.isArray(translated) ? translated : whyItems
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -164,10 +178,10 @@ export default function ContactPage() {
 
               <Card className="bg-secondary/50 border-primary/20">
                 <CardHeader>
-                  <CardTitle>{t("contact.why") || "Why Choose EGOS?"}</CardTitle>
+                  <CardTitle>{t("about.why") || "Why Choose EGOS?"}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {t("contact.whyItems").map((item: string, i: number) => (
+                  {getWhyItems().map((item: string, i: number) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></div>
                       <p className="text-gray-300">{item}</p>
