@@ -1,17 +1,35 @@
 "use server"
 
-export async function submitContactForm(formData: FormData) {
-  const name = formData.get("name") as string
-  const email = formData.get("email") as string
-  const message = formData.get("message") as string
-
-  // In a real application, you would integrate with an email service like:
-  // - Resend
-  // - SendGrid
-  // - Nodemailer with SMTP
-  // - AWS SES
-
+export async function submitContactForm(formData: FormData | null) {
   try {
+    // Check if formData is null or undefined
+    if (!formData) {
+      console.error("Form data is null or undefined")
+      return {
+        success: false,
+        message: "form_data_missing",
+      }
+    }
+
+    const name = formData.get("name") as string
+    const email = formData.get("email") as string
+    const message = formData.get("message") as string
+
+    // Validate required fields
+    if (!name || !email || !message) {
+      console.error("Missing required fields:", { name, email, message })
+      return {
+        success: false,
+        message: "missing_fields",
+      }
+    }
+
+    // In a real application, you would integrate with an email service like:
+    // - Resend
+    // - SendGrid
+    // - Nodemailer with SMTP
+    // - AWS SES
+
     // Simulate API call delay
     await new Promise((resolve) => setTimeout(resolve, 1000))
 

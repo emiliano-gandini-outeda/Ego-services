@@ -14,6 +14,29 @@ export default function Contact() {
   const { t } = useTranslation()
   const [state, formAction, isPending] = useActionState(submitContactForm, null)
 
+  // Handle form submission with a custom wrapper
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    const data = new FormData(event.target)
+    await formAction(data)
+  }
+
+  // Get appropriate message based on state
+  const getStatusMessage = () => {
+    if (!state) return null
+
+    if (state.message === "email_sent") {
+      return t("contact.success")
+    } else if (state.message === "missing_fields") {
+      return t("contact.missingFields") || "Please fill in all required fields."
+    } else if (state.message === "form_data_missing") {
+      return t("contact.formError") || "There was a problem with your form submission. Please try again."
+    } else {
+      return t("contact.error")
+    }
+  }
+
   return (
     <section id="contact" className="bg-background py-20">
       <div className="container px-4 md:px-6">
@@ -33,7 +56,7 @@ export default function Contact() {
               <CardDescription>{t("contact.formDescription")}</CardDescription>
             </CardHeader>
             <CardContent>
-              <form action={formAction} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <label
                     htmlFor="name"
@@ -81,14 +104,14 @@ export default function Contact() {
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={isPending}>
-                  {isPending ? "Sending..." : t("contact.submit")}
+                  {isPending ? t("contact.sending") || "Sending..." : t("contact.submit")}
                 </Button>
               </form>
               {state && (
                 <div
                   className={`mt-4 p-4 rounded-md ${state.success ? "bg-green-500/10 text-green-400 border border-green-500/20" : "bg-red-500/10 text-red-400 border border-red-500/20"}`}
                 >
-                  {state.success ? t("contact.success") : t("contact.error")}
+                  {getStatusMessage()}
                 </div>
               )}
             </CardContent>
