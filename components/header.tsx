@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Menu, Globe } from "lucide-react"
+import { Menu, Globe, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/components/language-provider"
 import { useRouter, usePathname } from "next/navigation"
@@ -11,9 +11,9 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 export default function Header() {
   const { t, language, setLanguage } = useTranslation()
   const [isScrolled, setIsScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const router = useRouter()
   const pathname = usePathname()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -146,12 +146,7 @@ export default function Header() {
           </DropdownMenu>
 
           {/* Mobile menu button */}
-          <Button
-            variant="outline"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
+          <Button variant="outline" size="icon" className="md:hidden" onClick={() => setMobileMenuOpen(true)}>
             <Menu className="h-5 w-5" />
             <span className="sr-only">Toggle menu</span>
           </Button>
@@ -160,32 +155,50 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-sm border-t border-gray-800 p-4">
-          <div className="flex flex-col gap-4">
-            <button
-              onClick={() => handleNavigation("/")}
-              className="text-lg font-medium hover:text-primary transition-colors text-left py-2"
-            >
-              {t("nav.home")}
-            </button>
-            <button
-              onClick={() => handleNavigation("#products")}
-              className="text-lg font-medium hover:text-primary transition-colors text-left py-2"
-            >
-              {t("nav.products")}
-            </button>
-            <button
-              onClick={() => handleNavigation("#about")}
-              className="text-lg font-medium hover:text-primary transition-colors text-left py-2"
-            >
-              {t("nav.about")}
-            </button>
-            <button
-              onClick={() => handleNavigation("/contact")}
-              className="text-lg font-medium hover:text-primary transition-colors text-left py-2"
-            >
-              {t("nav.contact")}
-            </button>
+        <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
+          <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-background p-6 shadow-lg">
+            <div className="flex items-center justify-between mb-8">
+              <button onClick={() => handleNavigation("/")} className="flex items-center gap-2">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EGOSicon-JUvOLfFTzXrebCQqpRGz71aNbzjQNX.png"
+                  alt="EGOS Logo"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8"
+                />
+                <span className="font-bold text-lg">EGOS</span>
+              </button>
+              <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
+                <X className="h-5 w-5" />
+                <span className="sr-only">Close menu</span>
+              </Button>
+            </div>
+            <div className="flex flex-col gap-6 pt-6">
+              <button
+                onClick={() => handleNavigation("/")}
+                className="text-lg font-medium hover:text-primary transition-colors text-left"
+              >
+                {t("nav.home")}
+              </button>
+              <button
+                onClick={() => handleNavigation("#products")}
+                className="text-lg font-medium hover:text-primary transition-colors text-left"
+              >
+                {t("nav.products")}
+              </button>
+              <button
+                onClick={() => handleNavigation("#about")}
+                className="text-lg font-medium hover:text-primary transition-colors text-left"
+              >
+                {t("nav.about")}
+              </button>
+              <button
+                onClick={() => handleNavigation("/contact")}
+                className="text-lg font-medium hover:text-primary transition-colors text-left"
+              >
+                {t("nav.contact")}
+              </button>
+            </div>
           </div>
         </div>
       )}
