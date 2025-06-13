@@ -2,43 +2,6 @@
 
 import { Resend } from "resend"
 
-// Define the ContactEmail component inline to avoid import issues
-const ContactEmail = ({ name, email, message }: { name: string; email: string; message: string }) => (
-  <div>
-    <h1>New Contact Form Submission</h1>
-    <p>You have received a new message from the EGOS website contact form.</p>
-
-    <h2>Contact Details:</h2>
-    <p>
-      <strong>Name:</strong> {name}
-    </p>
-    <p>
-      <strong>Email:</strong> {email}
-    </p>
-
-    <h2>Message:</h2>
-    <div
-      style={{
-        padding: "15px",
-        backgroundColor: "#f5f5f5",
-        borderLeft: "4px solid #dc2626",
-        marginTop: "10px",
-        marginBottom: "10px",
-      }}
-    >
-      {message.split("\n").map((line, i) => (
-        <p key={i} style={{ margin: "8px 0" }}>
-          {line}
-        </p>
-      ))}
-    </div>
-
-    <p style={{ marginTop: "20px", fontSize: "14px", color: "#666" }}>
-      This email was sent from the EGOS website contact form.
-    </p>
-  </div>
-)
-
 export async function submitContactForm(formData: FormData | null) {
   try {
     // Check if formData is null or undefined
@@ -76,12 +39,39 @@ export async function submitContactForm(formData: FormData | null) {
 
     const resend = new Resend(resendApiKey)
 
+    // Format message with line breaks for HTML
+    const formattedMessage = message
+      .split("\n")
+      .map((line) => `<p style="margin: 8px 0">${line}</p>`)
+      .join("")
+
+    // Create email HTML content
+    const emailHtml = `
+      <div>
+        <h1>New Contact Form Submission</h1>
+        <p>You have received a new message from the EGOS website contact form.</p>
+
+        <h2>Contact Details:</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+
+        <h2>Message:</h2>
+        <div style="padding: 15px; background-color: #f5f5f5; border-left: 4px solid #dc2626; margin-top: 10px; margin-bottom: 10px;">
+          ${formattedMessage}
+        </div>
+
+        <p style="margin-top: 20px; font-size: 14px; color: #666;">
+          This email was sent from the EGOS website contact form.
+        </p>
+      </div>
+    `
+
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: "EGOS Contact Form <contact@ego-services.com>",
       to: "emiliano.outeda@gmail.com",
       subject: `Contact Form: Message from ${name}`,
-      react: ContactEmail({ name, email, message }),
+      html: emailHtml,
       reply_to: email,
     })
 
