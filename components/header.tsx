@@ -11,6 +11,7 @@ import { useRouter, usePathname } from "next/navigation"
 export default function Header() {
   const { t, language, setLanguage } = useTranslation()
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false)
   const router = useRouter()
   const pathname = usePathname()
 
@@ -122,16 +123,53 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleLanguage}
-            className="rounded-full"
-            aria-label={`Switch to ${language === "en" ? "Spanish" : "English"}`}
-          >
-            <Globe className="h-5 w-5" />
-            <span className="ml-2 hidden md:inline">{language === "en" ? "ES" : "EN"}</span>
-          </Button>
+          <div className="relative">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="flex items-center gap-2 rounded-full"
+              onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+              aria-label="Change language"
+              aria-expanded={isLanguageOpen}
+              aria-haspopup="true"
+            >
+              <Globe className="h-4 w-4" />
+              <span className="hidden md:inline">{language === "en" ? "English" : "Español"}</span>
+              <span className="sr-only">Toggle language menu</span>
+            </Button>
+
+            {isLanguageOpen && (
+              <div
+                className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-background border border-border z-50 animate-in fade-in-50 slide-in-from-top-5 duration-200"
+                onMouseLeave={() => setIsLanguageOpen(false)}
+              >
+                <div className="py-1" role="menu" aria-orientation="vertical">
+                  <button
+                    className={`flex items-center w-full px-4 py-2 text-sm hover:bg-secondary/50 transition-colors ${language === "en" ? "bg-secondary/30 text-primary" : ""}`}
+                    role="menuitem"
+                    onClick={() => {
+                      setLanguage("en")
+                      setIsLanguageOpen(false)
+                    }}
+                  >
+                    <span className="mr-2 text-lg">🇺🇸</span>
+                    English
+                  </button>
+                  <button
+                    className={`flex items-center w-full px-4 py-2 text-sm hover:bg-secondary/50 transition-colors ${language === "es" ? "bg-secondary/30 text-primary" : ""}`}
+                    role="menuitem"
+                    onClick={() => {
+                      setLanguage("es")
+                      setIsLanguageOpen(false)
+                    }}
+                  >
+                    <span className="mr-2 text-lg">🇪🇸</span>
+                    Español
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
 
           <Sheet>
             <SheetTrigger asChild>
