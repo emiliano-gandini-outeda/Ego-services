@@ -14,13 +14,6 @@ export default function Contact() {
   const { t } = useTranslation()
   const [state, formAction, isPending] = useActionState(submitContactForm, null)
 
-  // Handle form submission with a custom wrapper
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    const formData = new FormData(event.target)
-    formAction(formData)
-  }
-
   // Get appropriate message based on state
   const getStatusMessage = () => {
     if (!state) return null
@@ -55,7 +48,7 @@ export default function Contact() {
               <CardDescription>{t("contact.formDescription")}</CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form action={formAction} className="space-y-4">
                 <div className="space-y-2">
                   <label
                     htmlFor="name"

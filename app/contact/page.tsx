@@ -38,13 +38,6 @@ export default function ContactPage() {
     return Array.isArray(translated) ? translated : whyItems
   }
 
-  // Handle form submission with a custom wrapper
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    const formData = new FormData(event.target)
-    formAction(formData)
-  }
-
   // Get appropriate message based on state
   const getStatusMessage = () => {
     if (!state) return null
@@ -89,7 +82,7 @@ export default function ContactPage() {
                 <CardDescription>{t("contact.formDescription")}</CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form action={formAction} className="space-y-4">
                   <div className="space-y-2">
                     <label
                       htmlFor="name"

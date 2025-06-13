@@ -2,7 +2,7 @@
 
 import { Resend } from "resend"
 
-export async function submitContactForm(formData: FormData) {
+export async function submitContactForm(prevState: any, formData: FormData) {
   try {
     // Check if formData is valid
     if (!formData || typeof formData.get !== "function") {
