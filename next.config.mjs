@@ -12,6 +12,7 @@ const nextConfig = {
     domains: ['blob.v0.dev'],
     unoptimized: true,
   },
+  output: 'standalone',
 }
 
 export default nextConfig
