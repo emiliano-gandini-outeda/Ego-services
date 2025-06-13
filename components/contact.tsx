@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Github, MessageSquare, Mail, Linkedin } from "lucide-react"
+import { Github, Mail, Linkedin } from "lucide-react"
+import { DiscordIcon } from "@/components/icons/discord-icon"
 import { submitContactForm } from "@/app/actions/contact"
 import { useActionState } from "react"
 
@@ -132,7 +133,7 @@ export default function Contact() {
                 </Button>
                 <Button variant="outline" size="icon" asChild>
                   <a href="https://discord.gg/egos" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-                    <MessageSquare className="h-5 w-5" />
+                    <DiscordIcon className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="outline" size="icon" asChild>

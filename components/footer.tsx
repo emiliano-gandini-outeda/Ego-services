@@ -3,7 +3,8 @@
 import { useTranslation } from "@/components/language-provider"
 import Link from "next/link"
 import Image from "next/image"
-import { Github, MessageSquare, Mail, Linkedin } from "lucide-react"
+import { Github, Mail, Linkedin } from "lucide-react"
+import { DiscordIcon } from "@/components/icons/discord-icon"
 import { useRouter, usePathname } from "next/navigation"
 
 export default function Footer() {
@@ -116,7 +117,7 @@ export default function Footer() {
               <Github className="h-5 w-5 text-gray-400 hover:text-primary transition-colors" />
             </Link>
             <Link href="https://discord.gg/egos" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-              <MessageSquare className="h-5 w-5 text-gray-400 hover:text-primary transition-colors" />
+              <DiscordIcon className="h-5 w-5 text-gray-400 hover:text-primary transition-colors" />
             </Link>
             <Link href="mailto:emiliano.outeda@gmail.com" aria-label="Email">
               <Mail className="h-5 w-5 text-gray-400 hover:text-primary transition-colors" />
