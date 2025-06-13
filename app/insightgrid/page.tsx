@@ -18,47 +18,47 @@ export default function InsightGridPage() {
   const features = [
     {
       icon: Database,
-      title: "Custom Data Processing Pipelines",
+      title: t("products.insightgrid.features")[0] || "Custom Data Processing Pipelines",
       description: "Build tailored data processing workflows that match your specific business requirements.",
     },
     {
       icon: BarChart3,
-      title: "Advanced Data Linking & Mapping",
+      title: t("products.insightgrid.features")[1] || "Advanced Data Linking & Mapping",
       description: "Create complex relationships between datasets with intelligent mapping algorithms.",
     },
     {
       icon: Zap,
-      title: "Real-time Data Transformation",
+      title: t("products.insightgrid.features")[2] || "Real-time Data Transformation",
       description: "Process and transform data in real-time with high-performance processing engines.",
     },
     {
       icon: BarChart3,
-      title: "Interactive Visualization Dashboards",
+      title: t("products.insightgrid.features")[3] || "Interactive Visualization Dashboards",
       description: "Create stunning, interactive dashboards that make data insights accessible to everyone.",
     },
     {
       icon: Database,
-      title: "Multi-format Data Import/Export",
+      title: t("products.insightgrid.features")[4] || "Multi-format Data Import/Export",
       description: "Support for CSV, JSON, XML, databases, and custom formats with seamless conversion.",
     },
     {
       icon: Code,
-      title: "Custom Algorithm Implementation",
+      title: t("products.insightgrid.features")[5] || "Custom Algorithm Implementation",
       description: "Deploy custom algorithms and machine learning models tailored to your data needs.",
     },
     {
       icon: Shield,
-      title: "Automated Data Quality Assessment",
+      title: t("products.insightgrid.features")[6] || "Automated Data Quality Assessment",
       description: "Ensure data integrity with automated validation, cleansing, and quality reporting.",
     },
     {
       icon: Cloud,
-      title: "Secure Cloud & On-premise Deployment",
+      title: t("products.insightgrid.features")[7] || "Secure Cloud & On-premise Deployment",
       description: "Flexible deployment options with enterprise-grade security and compliance.",
     },
   ]
 
-  const benefits = [
+  const benefits = t("insightgrid.benefitsItems") || [
     "Transform raw data into actionable business insights",
     "Reduce manual data processing time by up to 90%",
     "Improve data accuracy and consistency across systems",
@@ -67,7 +67,7 @@ export default function InsightGridPage() {
     "Ensure compliance with data governance standards",
   ]
 
-  const useCases = [
+  const useCases = t("insightgrid.useCasesItems") || [
     {
       title: "Business Intelligence",
       description: "Create comprehensive BI solutions with custom analytics and reporting capabilities.",
@@ -125,11 +125,7 @@ export default function InsightGridPage() {
                 </div>
               </div>
 
-              <p className="max-w-[600px] text-gray-300 md:text-xl">
-                A powerful web application platform designed to host custom data treatment and linking tools tailored
-                specifically for each client's unique needs. InsightGrid transforms raw data into actionable insights
-                through intelligent processing, advanced analytics, and seamless data integration capabilities.
-              </p>
+              <p className="max-w-[600px] text-gray-300 md:text-xl">{t("products.insightgrid.description")}</p>
 
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>

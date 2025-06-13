@@ -20,37 +20,37 @@ export default function DevBotPage() {
   const features = [
     {
       icon: Bot,
-      title: "Advanced Ticket System",
+      title: t("products.devbot.features")[0] || "Advanced Ticket System",
       description: "Professional support ticketing with privacy controls and workflow automation.",
     },
     {
       icon: Zap,
-      title: "Workflow Automation",
+      title: t("products.devbot.features")[1] || "Workflow Automation",
       description: "Create custom automated responses and moderation workflows.",
     },
     {
       icon: Github,
-      title: "GitHub Integration",
+      title: t("products.devbot.features")[2] || "GitHub Integration",
       description: "Seamless integration with GitHub repositories for project management.",
     },
     {
       icon: Users,
-      title: "Meeting Scheduler",
+      title: t("products.devbot.features")[3] || "Meeting Scheduler",
       description: "Coordinate team meetings and community events efficiently.",
     },
     {
       icon: MessageSquare,
-      title: "Conversation Management",
+      title: t("products.devbot.features")[4] || "Conversation Management",
       description: "Advanced tools for organizing and managing community discussions.",
     },
     {
       icon: Shield,
-      title: "Privacy & Security",
+      title: t("products.devbot.features")[5] || "Privacy & Security",
       description: "Comprehensive data protection and user privacy controls.",
     },
   ]
 
-  const upcomingFeatures = [
+  const upcomingFeatures = t("products.devbot.upcoming") || [
     "AI-Powered Features",
     "Google Calendar Integration",
     "Notion Integration",
@@ -59,7 +59,7 @@ export default function DevBotPage() {
     "API & Webhooks",
   ]
 
-  const useCases = [
+  const useCases = t("devbot.useCasesItems") || [
     {
       title: "Open Source Projects",
       description: "GitHub integration, contributor management, and issue tracking automation.",
@@ -112,11 +112,7 @@ export default function DevBotPage() {
                 </div>
               </div>
 
-              <p className="max-w-[600px] text-gray-300 md:text-xl">
-                A comprehensive Discord bot specifically designed for open source communities, developer teams, and
-                project maintainers. devBot streamlines community management through intelligent automation, advanced
-                ticketing systems, and powerful productivity tools that scale with community growth.
-              </p>
+              <p className="max-w-[600px] text-gray-300 md:text-xl">{t("products.devbot.description")}</p>
 
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>

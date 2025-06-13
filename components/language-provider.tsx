@@ -124,7 +124,7 @@ const es = {
     legal: "Legal",
   },
   hero: {
-    title: "Herramientas Personalizadas para Crecimiento Empresarial",
+    title: "Herramientas Personalizadas para el Crecimiento Empresarial",
     subtitle:
       "Proporcionamos herramientas y soluciones de optimización para ayudar a las organizaciones a crecer y gestionar sus operaciones de manera eficiente. Nos especializamos tanto en pequeñas y medianas empresas como en proyectos de código abierto.",
     cta: "Comienza Hoy",
@@ -145,7 +145,12 @@ const es = {
         "Herramientas de gestión de conversaciones",
         "Enfocado en privacidad y seguridad",
       ],
-      upcoming: ["Funciones impulsadas por IA", "Integraciones con Google Calendar, Notion y Trello"],
+      upcoming: [
+        "Funciones impulsadas por IA",
+        "Integraciones con Google Calendar, Notion y Trello",
+        "Análisis avanzados",
+        "API y Webhooks",
+      ],
       cta: "Más Información Sobre devBot",
     },
     insightgrid: {
@@ -160,6 +165,8 @@ const es = {
         "Paneles interactivos de visualización de datos",
         "Importación/exportación de datos en múltiples formatos",
         "Implementación de algoritmos personalizados",
+        "Evaluación automatizada de calidad de datos",
+        "Implementación segura en la nube y en las instalaciones",
       ],
       cta: "Más Información Sobre InsightGrid",
     },
