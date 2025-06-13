@@ -124,7 +124,7 @@ const es = {
     legal: "Legal",
   },
   hero: {
-    title: "Herramientas Personalizadas para el Crecimiento Empresarial",
+    title: "Herramientas Personalizadas para Crecimiento Empresarial",
     subtitle:
       "Proporcionamos herramientas y soluciones de optimización para ayudar a las organizaciones a crecer y gestionar sus operaciones de manera eficiente. Nos especializamos tanto en pequeñas y medianas empresas como en proyectos de código abierto.",
     cta: "Comienza Hoy",
