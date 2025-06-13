@@ -11,10 +11,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   poweredByHeader: false,
-  // Disable static exports for problematic pages
+  // Remove the experimental.appDir option as it's now default in Next.js 15
   experimental: {
-    // This ensures these pages are rendered at runtime instead of build time
-    appDir: true,
+    // Remove the appDir line
   },
   async headers() {
     return [
