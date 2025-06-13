@@ -105,11 +105,6 @@ const en = {
     description:
       "Eclipse Growth Optimization Services (EGOS) provides custom tools for small to medium businesses and open source projects. Visit us at ego-services.com",
   },
-  cta: {
-    demo: "Contact us now",
-    contact: "Contact Us for Custom Solutions",
-    consultation: "Schedule a Consultation",
-  },
   legal: {
     title: "Legal Information",
     termsTitle: "Terms of Service",
