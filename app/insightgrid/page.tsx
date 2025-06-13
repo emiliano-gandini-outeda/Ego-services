@@ -107,11 +107,11 @@ export default function InsightGridPage() {
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="flex flex-col justify-center space-y-4">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-20 h-20 flex items-center justify-center">
+                <div className="w-20 h-20 relative flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="64"
-                    height="64"
+                    width="80"
+                    height="80"
                     fill="#dc2626"
                     className="bi bi-grid-3x3-gap-fill animate-glow"
                     viewBox="0 0 16 16"
@@ -140,7 +140,7 @@ export default function InsightGridPage() {
 
             <div className="flex items-center justify-center">
               <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
-                <div className="w-64 h-64 flex items-center justify-center">
+                <div className="w-64 h-64 relative flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="160"

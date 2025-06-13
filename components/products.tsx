@@ -75,11 +75,11 @@ export default function Products() {
           <Card className="bg-secondary/50 border-primary/20 overflow-hidden flex flex-col">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 flex items-center justify-center">
+                <div className="relative w-12 h-12 flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
+                    width="36"
+                    height="36"
                     fill="#dc2626"
                     className="bi bi-grid-3x3-gap-fill"
                     viewBox="0 0 16 16"
