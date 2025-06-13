@@ -18,7 +18,7 @@ export default function Contact() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const formData = new FormData(event.target)
-    await formAction(formData)
+    formAction(formData)
   }
 
   // Get appropriate message based on state

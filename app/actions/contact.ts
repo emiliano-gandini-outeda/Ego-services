@@ -2,20 +2,20 @@
 
 import { Resend } from "resend"
 
-export async function submitContactForm(formData: FormData | null) {
+export async function submitContactForm(formData: FormData) {
   try {
-    // Check if formData is null or undefined
-    if (!formData) {
-      console.error("Form data is null or undefined")
+    // Check if formData is valid
+    if (!formData || typeof formData.get !== "function") {
+      console.error("Invalid form data received:", formData)
       return {
         success: false,
         message: "form_data_missing",
       }
     }
 
-    const name = formData.get("name") as string
-    const email = formData.get("email") as string
-    const message = formData.get("message") as string
+    const name = formData.get("name")?.toString() || ""
+    const email = formData.get("email")?.toString() || ""
+    const message = formData.get("message")?.toString() || ""
 
     // Validate required fields
     if (!name || !email || !message) {
