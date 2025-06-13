@@ -15,50 +15,52 @@ export default function InsightGridPage() {
     window.scrollTo(0, 0)
   }, [])
 
-  const features = [
+  // Default features in case translations aren't available
+  const defaultFeatures = [
     {
       icon: Database,
-      title: t("products.insightgrid.features")[0] || "Custom Data Processing Pipelines",
+      title: "Custom Data Processing Pipelines",
       description: "Build tailored data processing workflows that match your specific business requirements.",
     },
     {
       icon: BarChart3,
-      title: t("products.insightgrid.features")[1] || "Advanced Data Linking & Mapping",
+      title: "Advanced Data Linking & Mapping",
       description: "Create complex relationships between datasets with intelligent mapping algorithms.",
     },
     {
       icon: Zap,
-      title: t("products.insightgrid.features")[2] || "Real-time Data Transformation",
+      title: "Real-time Data Transformation",
       description: "Process and transform data in real-time with high-performance processing engines.",
     },
     {
       icon: BarChart3,
-      title: t("products.insightgrid.features")[3] || "Interactive Visualization Dashboards",
+      title: "Interactive Visualization Dashboards",
       description: "Create stunning, interactive dashboards that make data insights accessible to everyone.",
     },
     {
       icon: Database,
-      title: t("products.insightgrid.features")[4] || "Multi-format Data Import/Export",
+      title: "Multi-format Data Import/Export",
       description: "Support for CSV, JSON, XML, databases, and custom formats with seamless conversion.",
     },
     {
       icon: Code,
-      title: t("products.insightgrid.features")[5] || "Custom Algorithm Implementation",
+      title: "Custom Algorithm Implementation",
       description: "Deploy custom algorithms and machine learning models tailored to your data needs.",
     },
     {
       icon: Shield,
-      title: t("products.insightgrid.features")[6] || "Automated Data Quality Assessment",
+      title: "Automated Data Quality Assessment",
       description: "Ensure data integrity with automated validation, cleansing, and quality reporting.",
     },
     {
       icon: Cloud,
-      title: t("products.insightgrid.features")[7] || "Secure Cloud & On-premise Deployment",
+      title: "Secure Cloud & On-premise Deployment",
       description: "Flexible deployment options with enterprise-grade security and compliance.",
     },
   ]
 
-  const benefits = t("insightgrid.benefitsItems") || [
+  // Default benefits
+  const defaultBenefits = [
     "Transform raw data into actionable business insights",
     "Reduce manual data processing time by up to 90%",
     "Improve data accuracy and consistency across systems",
@@ -67,7 +69,8 @@ export default function InsightGridPage() {
     "Ensure compliance with data governance standards",
   ]
 
-  const useCases = t("insightgrid.useCasesItems") || [
+  // Default use cases
+  const defaultUseCases = [
     {
       title: "Business Intelligence",
       description: "Create comprehensive BI solutions with custom analytics and reporting capabilities.",
@@ -85,6 +88,23 @@ export default function InsightGridPage() {
       description: "Develop specialized analytics tools that address your unique business challenges.",
     },
   ]
+
+  // Get features from translations or use defaults
+  const features = defaultFeatures.map((feature, index) => {
+    const translatedFeatures = t("products.insightgrid.features")
+    return {
+      ...feature,
+      title: Array.isArray(translatedFeatures) && translatedFeatures[index] ? translatedFeatures[index] : feature.title,
+    }
+  })
+
+  // Get benefits from translations or use defaults
+  const translatedBenefits = t("insightgrid.benefitsItems")
+  const benefits = Array.isArray(translatedBenefits) ? translatedBenefits : defaultBenefits
+
+  // Get use cases from translations or use defaults
+  const translatedUseCases = t("insightgrid.useCasesItems")
+  const useCases = Array.isArray(translatedUseCases) ? translatedUseCases : defaultUseCases
 
   return (
     <div className="min-h-screen bg-background">
@@ -121,15 +141,19 @@ export default function InsightGridPage() {
                 </div>
                 <div>
                   <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl xl:text-7xl/none">InsightGrid</h1>
-                  <p className="text-xl text-primary font-semibold">Custom Data Treatment & Linking Solutions</p>
+                  <p className="text-xl text-primary font-semibold">
+                    {t("products.insightgrid.tagline") || "Custom Data Treatment & Linking Solutions"}
+                  </p>
                 </div>
               </div>
 
-              <p className="max-w-[600px] text-gray-300 md:text-xl">{t("products.insightgrid.description")}</p>
+              <p className="max-w-[600px] text-gray-300 md:text-xl">
+                {t("products.insightgrid.description") || defaultFeatures[0].description}
+              </p>
 
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-                  <Link href="/contact">Request Custom Solution</Link>
+                  <Link href="/contact">{t("insightgrid.requestSolution") || "Request Custom Solution"}</Link>
                 </Button>
               </div>
             </div>

@@ -11,6 +11,11 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   poweredByHeader: false,
+  // Disable static exports for problematic pages
+  experimental: {
+    // This ensures these pages are rendered at runtime instead of build time
+    appDir: true,
+  },
   async headers() {
     return [
       {

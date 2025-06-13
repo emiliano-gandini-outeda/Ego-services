@@ -4,7 +4,8 @@ import { useTranslation } from "@/components/language-provider"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Github, MessageSquare, Bot, Shield, Zap, Users } from "lucide-react"
+import { Github, Bot, Shield, Zap, Users } from "lucide-react"
+import { DiscordIcon } from "@/components/icons/discord-icon"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect } from "react"
@@ -17,40 +18,42 @@ export default function DevBotPage() {
     window.scrollTo(0, 0)
   }, [])
 
-  const features = [
+  // Default features in case translations aren't available
+  const defaultFeatures = [
     {
       icon: Bot,
-      title: t("products.devbot.features")[0] || "Advanced Ticket System",
+      title: "Advanced Ticket System",
       description: "Professional support ticketing with privacy controls and workflow automation.",
     },
     {
       icon: Zap,
-      title: t("products.devbot.features")[1] || "Workflow Automation",
+      title: "Workflow Automation",
       description: "Create custom automated responses and moderation workflows.",
     },
     {
       icon: Github,
-      title: t("products.devbot.features")[2] || "GitHub Integration",
+      title: "GitHub Integration",
       description: "Seamless integration with GitHub repositories for project management.",
     },
     {
       icon: Users,
-      title: t("products.devbot.features")[3] || "Meeting Scheduler",
+      title: "Meeting Scheduler",
       description: "Coordinate team meetings and community events efficiently.",
     },
     {
-      icon: MessageSquare,
-      title: t("products.devbot.features")[4] || "Conversation Management",
+      icon: DiscordIcon,
+      title: "Conversation Management",
       description: "Advanced tools for organizing and managing community discussions.",
     },
     {
       icon: Shield,
-      title: t("products.devbot.features")[5] || "Privacy & Security",
+      title: "Privacy & Security",
       description: "Comprehensive data protection and user privacy controls.",
     },
   ]
 
-  const upcomingFeatures = t("products.devbot.upcoming") || [
+  // Default upcoming features
+  const defaultUpcomingFeatures = [
     "AI-Powered Features",
     "Google Calendar Integration",
     "Notion Integration",
@@ -59,7 +62,8 @@ export default function DevBotPage() {
     "API & Webhooks",
   ]
 
-  const useCases = t("devbot.useCasesItems") || [
+  // Default use cases
+  const defaultUseCases = [
     {
       title: "Open Source Projects",
       description: "GitHub integration, contributor management, and issue tracking automation.",
@@ -77,6 +81,23 @@ export default function DevBotPage() {
       description: "Internal project management, meeting coordination, and workflow automation.",
     },
   ]
+
+  // Get features from translations or use defaults
+  const features = defaultFeatures.map((feature, index) => {
+    const translatedFeatures = t("products.devbot.features")
+    return {
+      ...feature,
+      title: Array.isArray(translatedFeatures) && translatedFeatures[index] ? translatedFeatures[index] : feature.title,
+    }
+  })
+
+  // Get upcoming features from translations or use defaults
+  const translatedUpcoming = t("products.devbot.upcoming")
+  const upcomingFeatures = Array.isArray(translatedUpcoming) ? translatedUpcoming : defaultUpcomingFeatures
+
+  // Get use cases from translations or use defaults
+  const translatedUseCases = t("devbot.useCasesItems")
+  const useCases = Array.isArray(translatedUseCases) ? translatedUseCases : defaultUseCases
 
   return (
     <div className="min-h-screen bg-background">
@@ -108,11 +129,15 @@ export default function DevBotPage() {
                 />
                 <div>
                   <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl xl:text-7xl/none">devBot</h1>
-                  <p className="text-xl text-primary font-semibold">Advanced Discord Community Management Solution</p>
+                  <p className="text-xl text-primary font-semibold">
+                    {t("products.devbot.tagline") || "Advanced Discord Community Management Solution"}
+                  </p>
                 </div>
               </div>
 
-              <p className="max-w-[600px] text-gray-300 md:text-xl">{t("products.devbot.description")}</p>
+              <p className="max-w-[600px] text-gray-300 md:text-xl">
+                {t("products.devbot.description") || defaultFeatures[0].description}
+              </p>
 
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
