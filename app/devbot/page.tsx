@@ -100,8 +100,8 @@ export default function DevBotPage() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="flex items-center gap-4 mb-4">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/devBotIcon-vDUEbCVQcr2TS7hOX9pR84kV0uuyyG.png"
-                  alt="DevBot Logo"
+                  src="/images/devbot-logo.png"
+                  alt="devBot Logo"
                   width={80}
                   height={80}
                   className="h-20 w-20 animate-glow"
@@ -137,8 +137,8 @@ export default function DevBotPage() {
             <div className="flex items-center justify-center">
               <div className="relative w-full max-w-md aspect-square">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/devBotIcon-vDUEbCVQcr2TS7hOX9pR84kV0uuyyG.png"
-                  alt="DevBot Logo"
+                  src="/images/devbot-logo.png"
+                  alt="devBot Logo"
                   fill
                   className="object-contain animate-glow"
                   priority

@@ -27,12 +27,7 @@ export default function Products() {
             <CardHeader className="pb-4">
               <div className="flex items-center gap-4">
                 <div className="relative w-12 h-12">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/devBotIcon-vDUEbCVQcr2TS7hOX9pR84kV0uuyyG.png"
-                    alt="DevBot Logo"
-                    fill
-                    className="object-contain"
-                  />
+                  <Image src="/images/devbot-logo.png" alt="devBot Logo" fill className="object-contain" />
                 </div>
                 <div>
                   <CardTitle className="text-2xl">{t("products.devbot.title")}</CardTitle>
@@ -80,10 +75,8 @@ export default function Products() {
           <Card className="bg-secondary/50 border-primary/20 overflow-hidden flex flex-col">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-4">
-                <div className="relative w-12 h-12 text-primary">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#dc2626" viewBox="0 0 16 16">
-                    <path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z" />
-                  </svg>
+                <div className="relative w-12 h-12">
+                  <Image src="/images/insightgrid-logo.svg" alt="InsightGrid Logo" fill className="object-contain" />
                 </div>
                 <div>
                   <CardTitle className="text-2xl">{t("products.insightgrid.title")}</CardTitle>

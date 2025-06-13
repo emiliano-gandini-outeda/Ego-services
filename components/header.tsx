@@ -2,16 +2,15 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Menu, Globe, X } from "lucide-react"
+import { Menu, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useTranslation } from "@/components/language-provider"
 import { useRouter, usePathname } from "next/navigation"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export default function Header() {
   const { t, language, setLanguage } = useTranslation()
   const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const router = useRouter()
   const pathname = usePathname()
 
@@ -24,10 +23,11 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleNavigation = (href: string) => {
-    // Close mobile menu if open
-    setMobileMenuOpen(false)
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "es" : "en")
+  }
 
+  const handleNavigation = (href: string) => {
     // If it's the home button
     if (href === "/") {
       if (pathname === "/") {
@@ -90,13 +90,7 @@ export default function Header() {
     >
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <button onClick={() => handleNavigation("/")} className="flex items-center gap-2">
-          <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EGOSicon-JUvOLfFTzXrebCQqpRGz71aNbzjQNX.png"
-            alt="EGOS Logo"
-            width={40}
-            height={40}
-            className="h-10 w-10"
-          />
+          <Image src="/images/company-logo.png" alt="EGOS Logo" width={40} height={40} className="h-10 w-10" />
           <span className="hidden font-bold text-xl md:inline-block">EGOS</span>
         </button>
 
@@ -128,80 +122,55 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full" aria-label="Select language">
-                <Globe className="h-5 w-5" />
-                <span className="ml-2 hidden md:inline">{language === "en" ? "EN" : "ES"}</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLanguage("en")} className={language === "en" ? "bg-primary/10" : ""}>
-                English
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage("es")} className={language === "es" ? "bg-primary/10" : ""}>
-                Español
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {/* Mobile menu button */}
-          <Button variant="outline" size="icon" className="md:hidden" onClick={() => setMobileMenuOpen(true)}>
-            <Menu className="h-5 w-5" />
-            <span className="sr-only">Toggle menu</span>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleLanguage}
+            className="rounded-full"
+            aria-label={`Switch to ${language === "en" ? "Spanish" : "English"}`}
+          >
+            <Globe className="h-5 w-5" />
+            <span className="ml-2 hidden md:inline">{language === "en" ? "ES" : "EN"}</span>
           </Button>
+
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <div className="flex flex-col gap-6 pt-10">
+                <button
+                  onClick={() => handleNavigation("/")}
+                  className="text-lg font-medium hover:text-primary transition-colors text-left"
+                >
+                  {t("nav.home")}
+                </button>
+                <button
+                  onClick={() => handleNavigation("#products")}
+                  className="text-lg font-medium hover:text-primary transition-colors text-left"
+                >
+                  {t("nav.products")}
+                </button>
+                <button
+                  onClick={() => handleNavigation("#about")}
+                  className="text-lg font-medium hover:text-primary transition-colors text-left"
+                >
+                  {t("nav.about")}
+                </button>
+                <button
+                  onClick={() => handleNavigation("/contact")}
+                  className="text-lg font-medium hover:text-primary transition-colors text-left"
+                >
+                  {t("nav.contact")}
+                </button>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
-          <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-background p-6 shadow-lg">
-            <div className="flex items-center justify-between mb-8">
-              <button onClick={() => handleNavigation("/")} className="flex items-center gap-2">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EGOSicon-JUvOLfFTzXrebCQqpRGz71aNbzjQNX.png"
-                  alt="EGOS Logo"
-                  width={32}
-                  height={32}
-                  className="h-8 w-8"
-                />
-                <span className="font-bold text-lg">EGOS</span>
-              </button>
-              <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
-                <X className="h-5 w-5" />
-                <span className="sr-only">Close menu</span>
-              </Button>
-            </div>
-            <div className="flex flex-col gap-6 pt-6">
-              <button
-                onClick={() => handleNavigation("/")}
-                className="text-lg font-medium hover:text-primary transition-colors text-left"
-              >
-                {t("nav.home")}
-              </button>
-              <button
-                onClick={() => handleNavigation("#products")}
-                className="text-lg font-medium hover:text-primary transition-colors text-left"
-              >
-                {t("nav.products")}
-              </button>
-              <button
-                onClick={() => handleNavigation("#about")}
-                className="text-lg font-medium hover:text-primary transition-colors text-left"
-              >
-                {t("nav.about")}
-              </button>
-              <button
-                onClick={() => handleNavigation("/contact")}
-                className="text-lg font-medium hover:text-primary transition-colors text-left"
-              >
-                {t("nav.contact")}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   )
 }

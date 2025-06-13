@@ -36,13 +36,7 @@ export default function Hero() {
           </div>
           <div className="flex items-center justify-center">
             <div className="relative w-full max-w-md aspect-square">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EGOSicon-JUvOLfFTzXrebCQqpRGz71aNbzjQNX.png"
-                alt="EGOS Logo"
-                fill
-                className="object-contain"
-                priority
-              />
+              <Image src="/images/company-logo.png" alt="EGOS Logo" fill className="object-contain" priority />
             </div>
           </div>
         </div>

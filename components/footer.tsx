@@ -37,13 +37,7 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EGOSicon-JUvOLfFTzXrebCQqpRGz71aNbzjQNX.png"
-                alt="EGOS Logo"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
+              <Image src="/images/company-logo.png" alt="EGOS Logo" width={40} height={40} className="h-10 w-10" />
               <span className="font-bold text-xl">EGOS</span>
             </Link>
             <p className="text-sm text-gray-400 max-w-xs">

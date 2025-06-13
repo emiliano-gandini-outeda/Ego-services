@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Database, BarChart3, Zap, Shield, Cloud, Code } from "lucide-react"
 import Link from "next/link"
 import { useEffect } from "react"
+import Image from "next/image"
 
 export default function InsightGridPage() {
   const { t } = useTranslation()
@@ -107,17 +108,13 @@ export default function InsightGridPage() {
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="flex flex-col justify-center space-y-4">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-20 h-20 text-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="80"
-                    height="80"
-                    fill="#dc2626"
-                    viewBox="0 0 16 16"
-                    className="animate-glow"
-                  >
-                    <path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z" />
-                  </svg>
+                <div className="w-20 h-20 relative">
+                  <Image
+                    src="/images/insightgrid-logo.svg"
+                    alt="InsightGrid Logo"
+                    fill
+                    className="object-contain animate-glow"
+                  />
                 </div>
                 <div>
                   <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl xl:text-7xl/none">InsightGrid</h1>
@@ -140,17 +137,13 @@ export default function InsightGridPage() {
 
             <div className="flex items-center justify-center">
               <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
-                <div className="w-64 h-64 text-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="256"
-                    height="256"
-                    fill="#dc2626"
-                    viewBox="0 0 16 16"
-                    className="animate-glow"
-                  >
-                    <path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z" />
-                  </svg>
+                <div className="w-64 h-64 relative">
+                  <Image
+                    src="/images/insightgrid-logo.svg"
+                    alt="InsightGrid Logo"
+                    fill
+                    className="object-contain animate-glow"
+                  />
                 </div>
               </div>
             </div>
