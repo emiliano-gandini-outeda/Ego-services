@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Menu, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useTranslation } from "@/components/language-provider"
 import { useRouter, usePathname } from "next/navigation"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -14,6 +13,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const router = useRouter()
   const pathname = usePathname()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +24,10 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const toggleLanguage = () => {
-    setLanguage(language === "en" ? "es" : "en")
-  }
-
   const handleNavigation = (href: string) => {
+    // Close mobile menu if open
+    setMobileMenuOpen(false)
+
     // If it's the home button
     if (href === "/") {
       if (pathname === "/") {
@@ -146,44 +145,50 @@ export default function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className="flex flex-col gap-6 pt-10">
-                <button
-                  onClick={() => handleNavigation("/")}
-                  className="text-lg font-medium hover:text-primary transition-colors text-left"
-                >
-                  {t("nav.home")}
-                </button>
-                <button
-                  onClick={() => handleNavigation("#products")}
-                  className="text-lg font-medium hover:text-primary transition-colors text-left"
-                >
-                  {t("nav.products")}
-                </button>
-                <button
-                  onClick={() => handleNavigation("#about")}
-                  className="text-lg font-medium hover:text-primary transition-colors text-left"
-                >
-                  {t("nav.about")}
-                </button>
-                <button
-                  onClick={() => handleNavigation("/contact")}
-                  className="text-lg font-medium hover:text-primary transition-colors text-left"
-                >
-                  {t("nav.contact")}
-                </button>
-              </div>
-            </SheetContent>
-          </Sheet>
+          {/* Mobile menu button */}
+          <Button
+            variant="outline"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <Menu className="h-5 w-5" />
+            <span className="sr-only">Toggle menu</span>
+          </Button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-background/95 backdrop-blur-sm border-t border-gray-800 p-4">
+          <div className="flex flex-col gap-4">
+            <button
+              onClick={() => handleNavigation("/")}
+              className="text-lg font-medium hover:text-primary transition-colors text-left py-2"
+            >
+              {t("nav.home")}
+            </button>
+            <button
+              onClick={() => handleNavigation("#products")}
+              className="text-lg font-medium hover:text-primary transition-colors text-left py-2"
+            >
+              {t("nav.products")}
+            </button>
+            <button
+              onClick={() => handleNavigation("#about")}
+              className="text-lg font-medium hover:text-primary transition-colors text-left py-2"
+            >
+              {t("nav.about")}
+            </button>
+            <button
+              onClick={() => handleNavigation("/contact")}
+              className="text-lg font-medium hover:text-primary transition-colors text-left py-2"
+            >
+              {t("nav.contact")}
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   )
 }
