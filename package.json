@@ -2,16 +2,16 @@
   "name": "egos-website",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "npm@10.2.3",
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=8.0.0"
+    "node": "20.x",
+    "npm": "10.x"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "echo 'Dependencies installed successfully'"
   },
   "dependencies": {
     "next": "15.0.0",
