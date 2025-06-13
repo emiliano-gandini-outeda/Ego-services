@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  trailingSlash: true,
+  output: 'standalone',
+  experimental: {
+    outputFileTracingRoot: undefined,
+  },
   images: {
     domains: ['blob.v0.dev'],
-    unoptimized: true,
+    unoptimized: process.env.NODE_ENV === 'development',
   },
   eslint: {
     ignoreDuringBuilds: true,
