@@ -1,8 +1,14 @@
 "use server"
 
-export async function submitContactForm(formData: FormData | null) {
+// Define a type for the form state
+type FormState = {
+  success?: boolean
+  message?: string
+} | null
+
+export async function submitContactForm(prevState: FormState, formData: FormData) {
   try {
-    // Check if formData is null or undefined
+    // Check if formData exists
     if (!formData) {
       console.error("Form data is null or undefined")
       return {

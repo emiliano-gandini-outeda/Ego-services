@@ -7,22 +7,35 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Github, MessageSquare, Mail, Linkedin, ArrowLeft } from "lucide-react"
 import { submitContactForm } from "@/app/actions/contact"
-import { useActionState, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
+import { useFormState } from "react-dom"
 
 export default function ContactPage() {
   const { t } = useTranslation()
-  const [state, formAction, isPending] = useActionState(submitContactForm, null)
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
+
+  // Initialize form state with useFormState hook
+  const initialState = { message: "", success: false }
+  const [state, formAction] = useFormState(submitContactForm, initialState)
+
+  // Track form submission state
+  const [isPending, setIsPending] = useState(false)
+
+  // Handle form submission start and end
+  const handleSubmitStart = () => setIsPending(true)
+  const handleSubmitEnd = () => setIsPending(false)
 
   // Scroll to top when the page loads
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  // Reset pending state when state changes
+  useEffect(() => {
+    if (state && state.message) {
+      handleSubmitEnd()
+    }
+  }, [state])
 
   // Default why items if translation is not available
   const whyItems = [
@@ -38,17 +51,9 @@ export default function ContactPage() {
     return Array.isArray(translated) ? translated : whyItems
   }
 
-  // Handle form submission with a custom wrapper
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-
-    const data = new FormData(event.target)
-    await formAction(data)
-  }
-
   // Get appropriate message based on state
   const getStatusMessage = () => {
-    if (!state) return null
+    if (!state || !state.message) return null
 
     if (state.message === "email_sent") {
       return t("contact.success")
@@ -90,7 +95,7 @@ export default function ContactPage() {
                 <CardDescription>{t("contact.formDescription")}</CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form action={formAction} onSubmit={handleSubmitStart} className="space-y-4">
                   <div className="space-y-2">
                     <label
                       htmlFor="name"
@@ -141,7 +146,7 @@ export default function ContactPage() {
                     {isPending ? t("contact.sending") || "Sending..." : t("contact.submit")}
                   </Button>
                 </form>
-                {state && (
+                {state && state.message && (
                   <div
                     className={`mt-4 p-4 rounded-md ${state.success ? "bg-green-500/10 text-green-400 border border-green-500/20" : "bg-red-500/10 text-red-400 border border-red-500/20"}`}
                   >

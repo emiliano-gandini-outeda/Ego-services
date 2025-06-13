@@ -8,23 +8,33 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Github, Mail, Linkedin } from "lucide-react"
 import { DiscordIcon } from "@/components/icons/discord-icon"
 import { submitContactForm } from "@/app/actions/contact"
-import { useActionState } from "react"
+import { useFormState } from "react-dom"
+import { useState, useEffect } from "react"
 
 export default function Contact() {
   const { t } = useTranslation()
-  const [state, formAction, isPending] = useActionState(submitContactForm, null)
 
-  // Handle form submission with a custom wrapper
-  const handleSubmit = async (event) => {
-    event.preventDefault()
+  // Initialize form state with useFormState hook
+  const initialState = { message: "", success: false }
+  const [state, formAction] = useFormState(submitContactForm, initialState)
 
-    const data = new FormData(event.target)
-    await formAction(data)
-  }
+  // Track form submission state
+  const [isPending, setIsPending] = useState(false)
+
+  // Handle form submission start and end
+  const handleSubmitStart = () => setIsPending(true)
+  const handleSubmitEnd = () => setIsPending(false)
+
+  // Reset pending state when state changes
+  useEffect(() => {
+    if (state && state.message) {
+      handleSubmitEnd()
+    }
+  }, [state])
 
   // Get appropriate message based on state
   const getStatusMessage = () => {
-    if (!state) return null
+    if (!state || !state.message) return null
 
     if (state.message === "email_sent") {
       return t("contact.success")
@@ -56,7 +66,7 @@ export default function Contact() {
               <CardDescription>{t("contact.formDescription")}</CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form action={formAction} onSubmit={handleSubmitStart} className="space-y-4">
                 <div className="space-y-2">
                   <label
                     htmlFor="name"
@@ -107,7 +117,7 @@ export default function Contact() {
                   {isPending ? t("contact.sending") || "Sending..." : t("contact.submit")}
                 </Button>
               </form>
-              {state && (
+              {state && state.message && (
                 <div
                   className={`mt-4 p-4 rounded-md ${state.success ? "bg-green-500/10 text-green-400 border border-green-500/20" : "bg-red-500/10 text-red-400 border border-red-500/20"}`}
                 >
