@@ -1,6 +1,22 @@
 "use server"
 
-import { Resend } from "resend"
+// Import Resend with a try-catch to handle potential missing package
+let Resend: any
+try {
+  Resend = require("resend").Resend
+} catch (error) {
+  console.error("Failed to import Resend:", error)
+  // Create a mock Resend class for fallback
+  Resend = class MockResend {
+    constructor() {}
+    emails = {
+      send: async () => {
+        console.log("Mock email send - Resend package not available")
+        return { data: null, error: { message: "Resend package not available" } }
+      },
+    }
+  }
+}
 
 // Define a type for the form state
 type FormState = {
@@ -66,7 +82,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
     // Send the actual email using Resend
     const { data, error } = await resend.emails.send({
-      from: "EGOS Contact Form <contact@ego-services.com>",
+      from: "EGOS Contact Form <contact@yourdomain.com>",
       to: ["emiliano.outeda@gmail.com"],
       subject: `Contact Form: Message from ${name}`,
       reply_to: email,

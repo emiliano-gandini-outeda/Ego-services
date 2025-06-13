@@ -11,9 +11,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   poweredByHeader: false,
-  // Remove the experimental.appDir option as it's now default in Next.js 15
   experimental: {
-    // Remove the appDir line
+    // Remove appDir as it's now default in Next.js 15
   },
   async headers() {
     return [
