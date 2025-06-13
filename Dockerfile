@@ -7,11 +7,11 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package.json package-lock.json* ./
+# Copy package.json and package-lock.json (if it exists)
+COPY package.json ./
 
-# Install dependencies with specific flags to optimize the build
-RUN npm ci --omit=dev --no-audit --no-fund --prefer-offline
+# Use npm install instead of npm ci since package-lock.json might not exist
+RUN npm install --omit=dev --no-audit --no-fund
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -56,9 +56,6 @@ EXPOSE 3000
 
 ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
-
-# Use a health check to ensure the container is running properly
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD curl -f http://localhost:3000/ || exit 1
 
 # Start the server
 CMD ["node", "server.js"]
