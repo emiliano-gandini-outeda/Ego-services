@@ -36,12 +36,17 @@ export default function Contact() {
   const getStatusMessage = () => {
     if (!state || !state.message) return null
 
-    if (state.message === "email_sent") {
+    if (state.message === "email_sent" || state.message === "email_sent_dev") {
       return t("contact.success")
     } else if (state.message === "missing_fields") {
       return t("contact.missingFields") || "Please fill in all required fields."
     } else if (state.message === "form_data_missing") {
       return t("contact.formError") || "There was a problem with your form submission. Please try again."
+    } else if (state.message === "inappropriate_content") {
+      return (
+        t("contact.inappropriate_content") ||
+        "Your message contains inappropriate content. Please revise and try again."
+      )
     } else {
       return t("contact.error")
     }

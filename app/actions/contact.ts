@@ -1,10 +1,15 @@
 "use server"
 
+import { Resend } from "resend"
+
 // Define a type for the form state
 type FormState = {
   success?: boolean
   message?: string
 } | null
+
+// Initialize Resend with API key
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function submitContactForm(prevState: FormState, formData: FormData) {
   try {
@@ -30,34 +35,72 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       }
     }
 
-    // In a real application, you would integrate with an email service like:
-    // - Resend
-    // - SendGrid
-    // - Nodemailer with SMTP
-    // - AWS SES
+    // Basic content validation to prevent spam/inappropriate content
+    const forbiddenWords = ["gay", "nigger", "fuck", "shit", "ass", "dick", "pussy", "cunt"]
+    const contentCheck = (name + " " + message).toLowerCase()
 
-    // Simulate API call delay
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    if (forbiddenWords.some((word) => contentCheck.includes(word))) {
+      return {
+        success: false,
+        message: "inappropriate_content",
+      }
+    }
 
-    // Here you would send the actual email to emiliano.outeda@gmail.com
-    console.log("Email sent to emiliano.outeda@gmail.com with the following content:", {
-      to: "emiliano.outeda@gmail.com",
-      from: email,
+    // Check if Resend API key is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.error("Resend API key is not configured")
+      // Fall back to console logging in development
+      console.log("Email would be sent to emiliano.outeda@gmail.com with the following content:", {
+        to: "emiliano.outeda@gmail.com",
+        from: email,
+        subject: `Contact Form: Message from ${name}`,
+        body: message,
+        timestamp: new Date().toISOString(),
+      })
+
+      return {
+        success: true,
+        message: "email_sent_dev", // Indicate this was a development mode send
+      }
+    }
+
+    // Send the actual email using Resend
+    const { data, error } = await resend.emails.send({
+      from: "EGOS Contact Form <contact@ego-services.com>",
+      to: ["emiliano.outeda@gmail.com"],
       subject: `Contact Form: Message from ${name}`,
-      body: message,
-      timestamp: new Date().toISOString(),
+      reply_to: email,
+      text: `
+Name: ${name}
+Email: ${email}
+Message:
+
+${message}
+
+Sent at: ${new Date().toISOString()}
+      `,
     })
+
+    if (error) {
+      console.error("Error sending email with Resend:", error)
+      return {
+        success: false,
+        message: "email_error",
+      }
+    }
+
+    console.log("Email sent successfully with Resend:", data)
 
     // Returning success state
     return {
       success: true,
-      message: "email_sent", // Using a key for translation instead of hardcoded message
+      message: "email_sent",
     }
   } catch (error) {
     console.error("Error sending contact form:", error)
     return {
       success: false,
-      message: "email_error", // Using a key for translation
+      message: "email_error",
     }
   }
 }
