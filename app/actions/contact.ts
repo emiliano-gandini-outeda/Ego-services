@@ -1,7 +1,7 @@
 "use server"
 
 import { Resend } from "resend"
-import { ContactEmail } from "@/app/emails/contact-email"
+import { ContactEmail } from "../emails/contact-email"
 
 export async function submitContactForm(formData: FormData | null) {
   try {
