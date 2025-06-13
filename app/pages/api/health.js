@@ -3,6 +3,5 @@ export default function handler(req, res) {
     status: "healthy",
     timestamp: new Date().toISOString(),
     service: "EGOS Website",
-    version: "1.0.0",
   })
 }

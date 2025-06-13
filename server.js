@@ -9,26 +9,23 @@ const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   const server = http.createServer((req, res) => {
-    // Handle root path specially for health checks
-    if (req.url === "/" && req.method === "HEAD") {
-      res.statusCode = 200
-      return res.end()
-    }
+    // Parse the URL
+    const parsedUrl = parse(req.url, true)
+    const { pathname } = parsedUrl
 
-    // Handle root path GET requests
-    if (req.url === "/") {
+    // Handle health checks at root path
+    if (pathname === "/" && (req.method === "HEAD" || req.headers["user-agent"]?.includes("Railway"))) {
       res.statusCode = 200
       res.setHeader("Content-Type", "application/json")
       return res.end(JSON.stringify({ status: "healthy", timestamp: new Date().toISOString() }))
     }
 
     // Let Next.js handle all other requests
-    const parsedUrl = parse(req.url, true)
     handle(req, res, parsedUrl)
   })
 
-  server.listen(port, (err) => {
+  server.listen(port, "0.0.0.0", (err) => {
     if (err) throw err
-    console.log(`> Ready on http://localhost:${port}`)
+    console.log(`> Ready on http://0.0.0.0:${port}`)
   })
 })
