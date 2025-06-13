@@ -5,15 +5,6 @@ export const revalidate = 0 // Don't cache this route
 
 export async function GET() {
   try {
-    // Check if required packages are available
-    let resendAvailable = false
-    try {
-      require("resend")
-      resendAvailable = true
-    } catch (error) {
-      console.warn("Resend package not available:", error)
-    }
-
     // Basic health check
     return NextResponse.json(
       {
@@ -22,9 +13,6 @@ export async function GET() {
         service: "EGOS Website",
         version: "1.0.0",
         environment: process.env.NODE_ENV || "development",
-        packages: {
-          resend: resendAvailable ? "available" : "not available",
-        },
       },
       { status: 200 },
     )
