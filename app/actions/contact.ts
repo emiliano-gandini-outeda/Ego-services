@@ -1,35 +1,11 @@
 "use server"
 
-// Import Resend with a try-catch to handle potential missing package
-let Resend: any
-try {
-  Resend = require("resend").Resend
-} catch (error) {
-  console.error("Failed to import Resend:", error)
-  // Create a mock Resend class for fallback
-  Resend = class MockResend {
-    constructor() {}
-    emails = {
-      send: async () => {
-        console.log("Mock email send - Resend package not available")
-        return { data: null, error: { message: "Resend package not available" } }
-      },
-    }
-  }
-}
+import { Resend } from "resend"
+import { ContactEmail } from "../emails/contact-email"
 
-// Define a type for the form state
-type FormState = {
-  success?: boolean
-  message?: string
-} | null
-
-// Initialize Resend with API key
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-export async function submitContactForm(prevState: FormState, formData: FormData) {
+export async function submitContactForm(formData: FormData | null) {
   try {
-    // Check if formData exists
+    // Check if formData is null or undefined
     if (!formData) {
       console.error("Form data is null or undefined")
       return {
@@ -51,50 +27,26 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       }
     }
 
-    // Basic content validation to prevent spam/inappropriate content
-    const forbiddenWords = ["gay", "nigger", "fuck", "shit", "ass", "dick", "pussy", "cunt"]
-    const contentCheck = (name + " " + message).toLowerCase()
+    // Initialize Resend with API key
+    const resendApiKey = process.env.RESEND_API_KEY
 
-    if (forbiddenWords.some((word) => contentCheck.includes(word))) {
+    if (!resendApiKey) {
+      console.error("RESEND_API_KEY environment variable is not set")
       return {
         success: false,
-        message: "inappropriate_content",
+        message: "email_error",
       }
     }
 
-    // Check if Resend API key is configured
-    if (!process.env.RESEND_API_KEY) {
-      console.error("Resend API key is not configured")
-      // Fall back to console logging in development
-      console.log("Email would be sent to emiliano.outeda@gmail.com with the following content:", {
-        to: "emiliano.outeda@gmail.com",
-        from: email,
-        subject: `Contact Form: Message from ${name}`,
-        body: message,
-        timestamp: new Date().toISOString(),
-      })
+    const resend = new Resend(resendApiKey)
 
-      return {
-        success: true,
-        message: "email_sent_dev", // Indicate this was a development mode send
-      }
-    }
-
-    // Send the actual email using Resend
+    // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: "EGOS Contact Form <contact@yourdomain.com>",
-      to: ["emiliano.outeda@gmail.com"],
+      from: "EGOS Contact Form <contact@ego-services.com>",
+      to: "emiliano.outeda@gmail.com",
       subject: `Contact Form: Message from ${name}`,
+      react: ContactEmail({ name, email, message }),
       reply_to: email,
-      text: `
-Name: ${name}
-Email: ${email}
-Message:
-
-${message}
-
-Sent at: ${new Date().toISOString()}
-      `,
     })
 
     if (error) {
@@ -110,13 +62,13 @@ Sent at: ${new Date().toISOString()}
     // Returning success state
     return {
       success: true,
-      message: "email_sent",
+      message: "email_sent", // Using a key for translation instead of hardcoded message
     }
   } catch (error) {
     console.error("Error sending contact form:", error)
     return {
       success: false,
-      message: "email_error",
+      message: "email_error", // Using a key for translation
     }
   }
 }

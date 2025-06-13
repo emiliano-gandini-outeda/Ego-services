@@ -8,45 +8,29 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Github, Mail, Linkedin } from "lucide-react"
 import { DiscordIcon } from "@/components/icons/discord-icon"
 import { submitContactForm } from "@/app/actions/contact"
-import { useFormState } from "react-dom"
-import { useState, useEffect } from "react"
+import { useActionState } from "react"
 
 export default function Contact() {
   const { t } = useTranslation()
+  const [state, formAction, isPending] = useActionState(submitContactForm, null)
 
-  // Initialize form state with useFormState hook
-  const initialState = { message: "", success: false }
-  const [state, formAction] = useFormState(submitContactForm, initialState)
-
-  // Track form submission state
-  const [isPending, setIsPending] = useState(false)
-
-  // Handle form submission start and end
-  const handleSubmitStart = () => setIsPending(true)
-  const handleSubmitEnd = () => setIsPending(false)
-
-  // Reset pending state when state changes
-  useEffect(() => {
-    if (state && state.message) {
-      handleSubmitEnd()
-    }
-  }, [state])
+  // Handle form submission with a custom wrapper
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    const formData = new FormData(event.target)
+    await formAction(formData)
+  }
 
   // Get appropriate message based on state
   const getStatusMessage = () => {
-    if (!state || !state.message) return null
+    if (!state) return null
 
-    if (state.message === "email_sent" || state.message === "email_sent_dev") {
+    if (state.message === "email_sent") {
       return t("contact.success")
     } else if (state.message === "missing_fields") {
       return t("contact.missingFields") || "Please fill in all required fields."
     } else if (state.message === "form_data_missing") {
       return t("contact.formError") || "There was a problem with your form submission. Please try again."
-    } else if (state.message === "inappropriate_content") {
-      return (
-        t("contact.inappropriate_content") ||
-        "Your message contains inappropriate content. Please revise and try again."
-      )
     } else {
       return t("contact.error")
     }
@@ -71,7 +55,7 @@ export default function Contact() {
               <CardDescription>{t("contact.formDescription")}</CardDescription>
             </CardHeader>
             <CardContent>
-              <form action={formAction} onSubmit={handleSubmitStart} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <label
                     htmlFor="name"
@@ -122,7 +106,7 @@ export default function Contact() {
                   {isPending ? t("contact.sending") || "Sending..." : t("contact.submit")}
                 </Button>
               </form>
-              {state && state.message && (
+              {state && (
                 <div
                   className={`mt-4 p-4 rounded-md ${state.success ? "bg-green-500/10 text-green-400 border border-green-500/20" : "bg-red-500/10 text-red-400 border border-red-500/20"}`}
                 >
