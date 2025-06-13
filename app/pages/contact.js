@@ -24,12 +24,20 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
+    // Simulate form submission and email sending
     await new Promise((resolve) => setTimeout(resolve, 1000))
+
+    console.log("Email sent to emiliano.outeda@gmail.com with the following content:", {
+      to: "emiliano.outeda@gmail.com",
+      from: formState.email,
+      subject: `Contact Form: Message from ${formState.name}`,
+      body: formState.message,
+      timestamp: new Date().toISOString(),
+    })
 
     setSubmitResult({
       success: true,
-      message: "Message sent successfully! We'll get back to you soon.",
+      message: "Message sent successfully to emiliano.outeda@gmail.com! We'll get back to you soon.",
     })
     setIsSubmitting(false)
   }

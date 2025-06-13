@@ -88,7 +88,7 @@ export default function Contact() {
                 <div
                   className={`mt-4 p-4 rounded-md ${state.success ? "bg-green-500/10 text-green-400 border border-green-500/20" : "bg-red-500/10 text-red-400 border border-red-500/20"}`}
                 >
-                  {state.message}
+                  {state.success ? t("contact.success") : t("contact.error")}
                 </div>
               )}
             </CardContent>

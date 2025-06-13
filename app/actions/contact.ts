@@ -11,29 +11,29 @@ export async function submitContactForm(formData: FormData) {
   // - Nodemailer with SMTP
   // - AWS SES
 
-  // For now, we'll simulate the email sending
   try {
     // Simulate API call delay
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
     // Here you would send the actual email to emiliano.outeda@gmail.com
-    console.log("Contact form submission:", {
-      name,
-      email,
-      message,
+    console.log("Email sent to emiliano.outeda@gmail.com with the following content:", {
+      to: "emiliano.outeda@gmail.com",
+      from: email,
+      subject: `Contact Form: Message from ${name}`,
+      body: message,
       timestamp: new Date().toISOString(),
-      recipient: "emiliano.outeda@gmail.com",
     })
 
+    // Returning success state
     return {
       success: true,
-      message: "Message sent successfully!",
+      message: "email_sent", // Using a key for translation instead of hardcoded message
     }
   } catch (error) {
     console.error("Error sending contact form:", error)
     return {
       success: false,
-      message: "There was an error sending your message. Please try again.",
+      message: "email_error", // Using a key for translation
     }
   }
 }
