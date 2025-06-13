@@ -147,7 +147,7 @@ export default function InsightGridPage() {
                     height="256"
                     fill="#dc2626"
                     viewBox="0 0 16 16"
-                    className="animate-glow hover:animate-bounce transition-all duration-300"
+                    className="animate-glow"
                   >
                     <path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z" />
                   </svg>
@@ -162,7 +162,9 @@ export default function InsightGridPage() {
       <section className="bg-secondary/20 py-20">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">Powerful Features</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">
+              {t("insightgrid.features") || "Powerful Features"}
+            </h2>
             <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
 
@@ -186,7 +188,9 @@ export default function InsightGridPage() {
       <section className="bg-background py-20">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">Key Benefits</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">
+              {t("insightgrid.benefits") || "Key Benefits"}
+            </h2>
             <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
 
@@ -205,7 +209,9 @@ export default function InsightGridPage() {
       <section className="bg-secondary/20 py-20">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">Use Cases</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">
+              {t("insightgrid.useCases") || "Use Cases"}
+            </h2>
             <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
 
@@ -229,18 +235,18 @@ export default function InsightGridPage() {
         <div className="container px-4 md:px-6">
           <div className="text-center space-y-8">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-              Ready to Transform Your Data Operations?
+              {t("insightgrid.cta") || "Ready to Transform Your Data Operations?"}
             </h2>
             <p className="text-gray-300 md:text-xl max-w-2xl mx-auto">
-              Let us create a custom InsightGrid solution tailored to your specific data challenges and business
-              requirements.
+              {t("insightgrid.ctaDescription") ||
+                "Let us create a custom InsightGrid solution tailored to your specific data challenges and business requirements."}
             </p>
             <div className="flex flex-col gap-4 min-[400px]:flex-row justify-center">
               <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-                <Link href="/contact">Request Custom Solution</Link>
+                <Link href="/contact">{t("insightgrid.requestSolution") || "Request Custom Solution"}</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/contact">Contact Us</Link>
+                <Link href="/contact">{t("contact.title") || "Contact Us"}</Link>
               </Button>
             </div>
           </div>

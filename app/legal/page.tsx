@@ -41,7 +41,7 @@ export default function LegalPage() {
               <div className="flex justify-end">
                 <Button variant="outline" size="sm" onClick={downloadTermsAsPDF}>
                   <Download className="mr-2 h-4 w-4" />
-                  {t("legal.downloadPdf")}
+                  Download PDF
                 </Button>
               </div>
             </CardHeader>
@@ -149,7 +149,7 @@ export default function LegalPage() {
               <div className="flex justify-end">
                 <Button variant="outline" size="sm" onClick={downloadPrivacyAsPDF}>
                   <Download className="mr-2 h-4 w-4" />
-                  {t("legal.downloadPdf")}
+                  Download PDF
                 </Button>
               </div>
             </CardHeader>
@@ -158,7 +158,7 @@ export default function LegalPage() {
               <p>
                 Eclipse Growth Optimization Services ("EGOS", "we", "us", or "our") is committed to protecting your
                 privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when
-                you visit our website ego-services.com or use our services.
+                visit our website ego-services.com or use our services.
               </p>
 
               <h2>2. Information We Collect</h2>

@@ -164,25 +164,15 @@ export default function ContactPage() {
 
               <Card className="bg-secondary/50 border-primary/20">
                 <CardHeader>
-                  <CardTitle>Why Choose EGOS?</CardTitle>
+                  <CardTitle>{t("contact.why") || "Why Choose EGOS?"}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></div>
-                    <p className="text-gray-300">Customized solutions for your specific needs</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></div>
-                    <p className="text-gray-300">Scalable tools that grow with your organization</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></div>
-                    <p className="text-gray-300">Expert support and guidance</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></div>
-                    <p className="text-gray-300">Proven experience with small-medium businesses</p>
-                  </div>
+                  {t("contact.whyItems").map((item: string, i: number) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></div>
+                      <p className="text-gray-300">{item}</p>
+                    </div>
+                  ))}
                 </CardContent>
               </Card>
             </div>

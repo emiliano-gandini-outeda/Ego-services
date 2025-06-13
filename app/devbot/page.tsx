@@ -4,7 +4,7 @@ import { useTranslation } from "@/components/language-provider"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Github, MessageSquare, Bot, Shield, Zap, Users, ArrowLeft } from "lucide-react"
+import { Github, MessageSquare, Bot, Shield, Zap, Users } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect } from "react"
@@ -96,12 +96,6 @@ export default function DevBotPage() {
         ></div>
 
         <div className="container px-4 md:px-6 relative z-10">
-          <Button variant="ghost" asChild className="self-start mb-8">
-            <Link href="/" className="flex items-center gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              {t("nav.home")}
-            </Link>
-          </Button>
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="flex flex-col justify-center space-y-4">
               <div className="flex items-center gap-4 mb-4">
@@ -113,23 +107,29 @@ export default function DevBotPage() {
                   className="h-20 w-20 animate-glow"
                 />
                 <div>
-                  <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl xl:text-7xl/none">DevBot</h1>
+                  <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl xl:text-7xl/none">devBot</h1>
                   <p className="text-xl text-primary font-semibold">Advanced Discord Community Management Solution</p>
                 </div>
               </div>
 
               <p className="max-w-[600px] text-gray-300 md:text-xl">
                 A comprehensive Discord bot specifically designed for open source communities, developer teams, and
-                project maintainers. DevBot streamlines community management through intelligent automation, advanced
+                project maintainers. devBot streamlines community management through intelligent automation, advanced
                 ticketing systems, and powerful productivity tools that scale with community growth.
               </p>
 
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-                  <Link href="/contact">Get Started with DevBot</Link>
+                  <Link href="/contact">{t("devbot.getStarted") || "Get Started Today"}</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <Link href="https://github.com/emiliano-gandini-outeda/devbot">View on GitHub</Link>
+                  <Link
+                    href="https://github.com/emiliano-gandini-outeda/devbot"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t("devbot.viewOnGitHub") || "View on GitHub"}
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -153,7 +153,9 @@ export default function DevBotPage() {
       <section className="bg-secondary/20 py-20">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">{t("products.features")}</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">
+              {t("devbot.features") || "Core Features"}
+            </h2>
             <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
 
@@ -177,7 +179,9 @@ export default function DevBotPage() {
       <section className="bg-background py-20">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">{t("products.perfectFor")}</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">
+              {t("devbot.useCases") || "Perfect For"}
+            </h2>
             <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
 
@@ -200,9 +204,11 @@ export default function DevBotPage() {
       <section className="bg-secondary/20 py-20">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">{t("products.comingSoon")}</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">
+              {t("devbot.upcomingFeatures") || "Coming Soon"}
+            </h2>
             <p className="text-gray-300 md:text-xl mb-8">
-              DevBot is continuously evolving with new features and integrations
+              devBot is continuously evolving with new features and integrations
             </p>
             <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
@@ -222,15 +228,15 @@ export default function DevBotPage() {
         <div className="container px-4 md:px-6">
           <div className="text-center space-y-8">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-              Ready to Transform Your Community Management?
+              {t("devbot.cta") || "Ready to Transform Your Community Management?"}
             </h2>
             <p className="text-gray-300 md:text-xl max-w-2xl mx-auto">
-              Join the growing number of communities using DevBot to streamline their operations and enhance member
-              engagement.
+              {t("devbot.ctaDescription") ||
+                "Join the growing number of communities using devBot to streamline their operations and enhance member engagement."}
             </p>
             <div className="flex justify-center">
               <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-                <Link href="/contact">Get Started Today</Link>
+                <Link href="/contact">{t("devbot.getStarted") || "Get Started Today"}</Link>
               </Button>
             </div>
           </div>

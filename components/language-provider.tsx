@@ -20,14 +20,11 @@ const en = {
   },
   products: {
     title: "Our Products",
-    features: "Core Features",
-    perfectFor: "Perfect For",
-    comingSoon: "Coming Soon",
     devbot: {
-      title: "DevBot",
+      title: "devBot",
       tagline: "Advanced Discord Community Management Solution",
       description:
-        "A comprehensive Discord bot specifically designed for open source communities, developer teams, and project maintainers. DevBot streamlines community management through intelligent automation, advanced ticketing systems, and powerful productivity tools that scale with community growth.",
+        "A comprehensive Discord bot specifically designed for open source communities, developer teams, and project maintainers. devBot streamlines community management through intelligent automation, advanced ticketing systems, and powerful productivity tools that scale with community growth.",
       features: [
         "Advanced ticket system with privacy controls",
         "Workflow automation and custom responses",
@@ -37,7 +34,7 @@ const en = {
         "Privacy & security focused",
       ],
       upcoming: ["AI-powered features", "Google Calendar, Notion, and Trello integrations"],
-      cta: "Learn More About DevBot",
+      cta: "Learn More About devBot",
     },
     insightgrid: {
       title: "InsightGrid",
@@ -101,6 +98,8 @@ const en = {
     legal: "Legal",
     terms: "Terms",
     privacy: "Privacy",
+    description:
+      "Eclipse Growth Optimization Services (EGOS) provides custom tools for small to medium businesses and open source projects. Visit us at ego-services.com",
   },
   cta: {
     demo: "Contact us now",
@@ -112,7 +111,6 @@ const en = {
     termsTitle: "Terms of Service",
     privacyTitle: "Privacy Policy",
     lastUpdated: "Last Updated",
-    downloadPdf: "Download PDF",
   },
 }
 
@@ -134,14 +132,11 @@ const es = {
   },
   products: {
     title: "Nuestros Productos",
-    features: "Características Principales",
-    perfectFor: "Perfecto Para",
-    comingSoon: "Próximamente",
     devbot: {
-      title: "DevBot",
+      title: "devBot",
       tagline: "Solución Avanzada de Gestión de Comunidades en Discord",
       description:
-        "Un bot de Discord completo diseñado específicamente para comunidades de código abierto, equipos de desarrolladores y mantenedores de proyectos. DevBot agiliza la gestión de la comunidad a través de automatización inteligente, sistemas avanzados de tickets y potentes herramientas de productividad que escalan con el crecimiento de la comunidad.",
+        "Un bot de Discord completo diseñado específicamente para comunidades de código abierto, equipos de desarrolladores y mantenedores de proyectos. devBot agiliza la gestión de la comunidad a través de automatización inteligente, sistemas avanzados de tickets y potentes herramientas de productividad que escalan con el crecimiento de la comunidad.",
       features: [
         "Sistema avanzado de tickets con controles de privacidad",
         "Automatización de flujos de trabajo y respuestas personalizadas",
@@ -151,7 +146,7 @@ const es = {
         "Enfocado en privacidad y seguridad",
       ],
       upcoming: ["Funciones impulsadas por IA", "Integraciones con Google Calendar, Notion y Trello"],
-      cta: "Más Información Sobre DevBot",
+      cta: "Más Información Sobre devBot",
     },
     insightgrid: {
       title: "InsightGrid",
@@ -207,6 +202,13 @@ const es = {
     namePlaceholder: "Juan Pérez",
     emailPlaceholder: "juan@ejemplo.com",
     messagePlaceholder: "¿Cómo podemos ayudarte?",
+    why: "Por Qué Elegir EGOS",
+    whyItems: [
+      "Soluciones personalizadas para sus necesidades específicas",
+      "Herramientas escalables que crecen con su organización",
+      "Soporte y orientación de expertos",
+      "Experiencia probada con pequeñas y medianas empresas",
+    ],
   },
   footer: {
     rights: "Todos los derechos reservados",
@@ -215,6 +217,8 @@ const es = {
     legal: "Legal",
     terms: "Términos",
     privacy: "Privacidad",
+    description:
+      "Eclipse Growth Optimization Services (EGOS) proporciona herramientas personalizadas para pequeñas y medianas empresas y proyectos de código abierto. Visítenos en ego-services.com",
   },
   cta: {
     demo: "Contáctanos ahora",
@@ -226,7 +230,71 @@ const es = {
     termsTitle: "Términos de Servicio",
     privacyTitle: "Política de Privacidad",
     lastUpdated: "Última Actualización",
-    downloadPdf: "Descargar PDF",
+  },
+  devbot: {
+    features: "Características Principales",
+    upcomingFeatures: "Próximamente",
+    useCases: "Perfecto Para",
+    useCasesItems: [
+      {
+        title: "Proyectos de Código Abierto",
+        description: "Integración con GitHub, gestión de colaboradores y automatización de seguimiento de problemas.",
+      },
+      {
+        title: "Comunidades de Desarrolladores",
+        description: "Coordinación de revisión de código, discusiones técnicas y compartición de conocimientos.",
+      },
+      {
+        title: "Servidores Educativos",
+        description: "Recordatorios de tareas, grupos de estudio y coordinación de proyectos académicos.",
+      },
+      {
+        title: "Colaboración en Equipo",
+        description: "Gestión de proyectos internos, coordinación de reuniones y automatización de flujos de trabajo.",
+      },
+    ],
+    cta: "¿Listo para Transformar la Gestión de tu Comunidad?",
+    ctaDescription:
+      "Únete al creciente número de comunidades que utilizan devBot para optimizar sus operaciones y mejorar la participación de los miembros.",
+    getStarted: "Comienza Hoy",
+    viewOnGitHub: "Ver en GitHub",
+  },
+  insightgrid: {
+    features: "Características Poderosas",
+    benefits: "Beneficios Clave",
+    benefitsItems: [
+      "Transformar datos sin procesar en información empresarial procesable",
+      "Reducir el tiempo de procesamiento manual de datos hasta en un 90%",
+      "Mejorar la precisión y consistencia de los datos en todos los sistemas",
+      "Escalar operaciones de datos a medida que crece su negocio",
+      "Integrar con herramientas y flujos de trabajo existentes",
+      "Garantizar el cumplimiento de los estándares de gobernanza de datos",
+    ],
+    useCases: "Casos de Uso",
+    useCasesItems: [
+      {
+        title: "Inteligencia Empresarial",
+        description: "Crear soluciones completas de BI con capacidades personalizadas de análisis e informes.",
+      },
+      {
+        title: "Integración de Datos",
+        description: "Conectar fuentes de datos dispares y crear vistas unificadas de sus datos empresariales.",
+      },
+      {
+        title: "Automatización de Procesos",
+        description:
+          "Automatizar flujos de trabajo de datos complejos y reducir la intervención manual en operaciones de datos.",
+      },
+      {
+        title: "Análisis Personalizados",
+        description:
+          "Desarrollar herramientas de análisis especializadas que aborden sus desafíos empresariales únicos.",
+      },
+    ],
+    cta: "¿Listo para Transformar sus Operaciones de Datos?",
+    ctaDescription:
+      "Permítanos crear una solución InsightGrid personalizada adaptada a sus desafíos de datos específicos y requisitos empresariales.",
+    requestSolution: "Solicitar Solución Personalizada",
   },
 }
 

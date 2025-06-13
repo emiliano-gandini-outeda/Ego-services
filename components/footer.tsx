@@ -47,8 +47,8 @@ export default function Footer() {
               <span className="font-bold text-xl">EGOS</span>
             </Link>
             <p className="text-sm text-gray-400 max-w-xs">
-              Eclipse Growth Optimization Services (EGOS) provides custom tools for small to medium businesses and open
-              source projects. Visit us at ego-services.com
+              {t("footer.description") ||
+                "Eclipse Growth Optimization Services (EGOS) provides custom tools for small to medium businesses and open source projects. Visit us at ego-services.com"}
             </p>
           </div>
 
