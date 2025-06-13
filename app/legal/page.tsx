@@ -41,7 +41,7 @@ export default function LegalPage() {
               <div className="flex justify-end">
                 <Button variant="outline" size="sm" onClick={downloadTermsAsPDF}>
                   <Download className="mr-2 h-4 w-4" />
-                  Download PDF
+                  {t("legal.downloadPdf")}
                 </Button>
               </div>
             </CardHeader>
@@ -149,7 +149,7 @@ export default function LegalPage() {
               <div className="flex justify-end">
                 <Button variant="outline" size="sm" onClick={downloadPrivacyAsPDF}>
                   <Download className="mr-2 h-4 w-4" />
-                  Download PDF
+                  {t("legal.downloadPdf")}
                 </Button>
               </div>
             </CardHeader>

@@ -4,7 +4,7 @@ import { useTranslation } from "@/components/language-provider"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Github, MessageSquare, Bot, Shield, Zap, Users } from "lucide-react"
+import { Github, MessageSquare, Bot, Shield, Zap, Users, ArrowLeft } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect } from "react"
@@ -96,6 +96,12 @@ export default function DevBotPage() {
         ></div>
 
         <div className="container px-4 md:px-6 relative z-10">
+          <Button variant="ghost" asChild className="self-start mb-8">
+            <Link href="/" className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              {t("nav.home")}
+            </Link>
+          </Button>
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="flex flex-col justify-center space-y-4">
               <div className="flex items-center gap-4 mb-4">
@@ -147,7 +153,7 @@ export default function DevBotPage() {
       <section className="bg-secondary/20 py-20">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">Core Features</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">{t("products.features")}</h2>
             <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
 
@@ -171,7 +177,7 @@ export default function DevBotPage() {
       <section className="bg-background py-20">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">Perfect For</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">{t("products.perfectFor")}</h2>
             <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
 
@@ -194,7 +200,7 @@ export default function DevBotPage() {
       <section className="bg-secondary/20 py-20">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">Coming Soon</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">{t("products.comingSoon")}</h2>
             <p className="text-gray-300 md:text-xl mb-8">
               DevBot is continuously evolving with new features and integrations
             </p>

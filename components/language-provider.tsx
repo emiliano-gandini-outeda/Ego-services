@@ -20,6 +20,9 @@ const en = {
   },
   products: {
     title: "Our Products",
+    features: "Core Features",
+    perfectFor: "Perfect For",
+    comingSoon: "Coming Soon",
     devbot: {
       title: "DevBot",
       tagline: "Advanced Discord Community Management Solution",
@@ -109,6 +112,7 @@ const en = {
     termsTitle: "Terms of Service",
     privacyTitle: "Privacy Policy",
     lastUpdated: "Last Updated",
+    downloadPdf: "Download PDF",
   },
 }
 
@@ -130,6 +134,9 @@ const es = {
   },
   products: {
     title: "Nuestros Productos",
+    features: "Características Principales",
+    perfectFor: "Perfecto Para",
+    comingSoon: "Próximamente",
     devbot: {
       title: "DevBot",
       tagline: "Solución Avanzada de Gestión de Comunidades en Discord",
@@ -219,6 +226,7 @@ const es = {
     termsTitle: "Términos de Servicio",
     privacyTitle: "Política de Privacidad",
     lastUpdated: "Última Actualización",
+    downloadPdf: "Descargar PDF",
   },
 }
 

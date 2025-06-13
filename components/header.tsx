@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useTranslation } from "@/components/language-provider"
 import { useRouter, usePathname } from "next/navigation"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export default function Header() {
   const { t, language, setLanguage } = useTranslation()
@@ -128,16 +129,22 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleLanguage}
-            className="rounded-full"
-            aria-label={`Switch to ${language === "en" ? "Spanish" : "English"}`}
-          >
-            <Globe className="h-5 w-5" />
-            <span className="ml-2 hidden md:inline">{language === "en" ? "ES" : "EN"}</span>
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="rounded-full" aria-label="Select language">
+                <Globe className="h-5 w-5" />
+                <span className="ml-2 hidden md:inline">{language === "en" ? "EN" : "ES"}</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => setLanguage("en")} className={language === "en" ? "bg-primary/10" : ""}>
+                English
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLanguage("es")} className={language === "es" ? "bg-primary/10" : ""}>
+                Español
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           <Sheet>
             <SheetTrigger asChild>
