@@ -6,7 +6,7 @@ nodeVersion = "20"
 cmds = ["npm install --legacy-peer-deps"]
 
 [phases.build]
-cmds = ["NODE_ENV=production npm run build"]
+cmds = ["npm run build"]
 
 [start]
 cmd = "npm start"

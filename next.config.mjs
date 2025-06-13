@@ -11,6 +11,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Allow both /app and /pages directories to coexist
+  experimental: {
+    appDir: true,
+  }
 }
 
 export default nextConfig
