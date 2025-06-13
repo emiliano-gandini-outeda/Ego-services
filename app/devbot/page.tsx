@@ -225,17 +225,16 @@ export default function DevBotPage() {
             <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
 
-          <div className="flex justify-center">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 place-items-center">
               {upcomingFeatures.map((feature, i) => (
-                <div key={i} className="flex justify-center">
-                  <Badge
-                    variant="outline"
-                    className="bg-primary/10 text-primary border-primary/20 p-4 text-center w-full"
-                  >
-                    {feature}
-                  </Badge>
-                </div>
+                <Badge
+                  key={i}
+                  variant="outline"
+                  className="bg-primary/10 text-primary border-primary/20 p-4 text-center w-full max-w-xs"
+                >
+                  {feature}
+                </Badge>
               ))}
             </div>
           </div>

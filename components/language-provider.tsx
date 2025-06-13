@@ -33,7 +33,14 @@ const en = {
         "Conversation management tools",
         "Privacy & security focused",
       ],
-      upcoming: ["AI-powered features", "Google Calendar, Notion, and Trello integrations"],
+      upcoming: [
+        "AI-Powered Features",
+        "Google Calendar Integration",
+        "Notion Integration",
+        "Trello Integration",
+        "Advanced Analytics",
+        "API & Webhooks",
+      ],
       cta: "Learn More About devBot",
     },
     insightgrid: {
@@ -178,7 +185,9 @@ const es = {
       ],
       upcoming: [
         "Funciones impulsadas por IA",
-        "Integraciones con Google Calendar, Notion y Trello",
+        "Integración con Google Calendar",
+        "Integración con Notion",
+        "Integración con Trello",
         "Análisis avanzados",
         "API y Webhooks",
       ],
