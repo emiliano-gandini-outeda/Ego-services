@@ -139,18 +139,9 @@ export default function DevBotPage() {
                 {t("products.devbot.description") || defaultFeatures[0].description}
               </p>
 
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <div className="flex justify-center">
                 <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
                   <Link href="/contact">{t("devbot.getStarted") || "Get Started Today"}</Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <Link
-                    href="https://github.com/emiliano-gandini-outeda/devbot"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {t("devbot.viewOnGitHub") || "View on GitHub"}
-                  </Link>
                 </Button>
               </div>
             </div>
@@ -234,12 +225,18 @@ export default function DevBotPage() {
             <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
-            {upcomingFeatures.map((feature, i) => (
-              <Badge key={i} variant="outline" className="bg-primary/10 text-primary border-primary/20 p-4 text-center">
-                {feature}
-              </Badge>
-            ))}
+          <div className="flex justify-center">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-4xl">
+              {upcomingFeatures.map((feature, i) => (
+                <Badge
+                  key={i}
+                  variant="outline"
+                  className="bg-primary/10 text-primary border-primary/20 p-4 text-center"
+                >
+                  {feature}
+                </Badge>
+              ))}
+            </div>
           </div>
         </div>
       </section>

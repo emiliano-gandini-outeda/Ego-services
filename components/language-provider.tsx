@@ -115,6 +115,34 @@ const en = {
     privacyTitle: "Privacy Policy",
     lastUpdated: "Last Updated",
   },
+  devbot: {
+    features: "Core Features",
+    upcomingFeatures: "Coming Soon",
+    useCases: "Perfect For",
+    useCasesItems: [
+      {
+        title: "Open Source Projects",
+        description: "GitHub integration, contributor management, and issue tracking automation.",
+      },
+      {
+        title: "Developer Communities",
+        description: "Code review coordination, technical discussions, and knowledge sharing.",
+      },
+      {
+        title: "Educational Servers",
+        description: "Assignment reminders, study groups, and academic project coordination.",
+      },
+      {
+        title: "Team Collaboration",
+        description: "Internal project management, meeting coordination, and workflow automation.",
+      },
+    ],
+    cta: "Ready to Transform Your Community Management?",
+    ctaDescription:
+      "Join the growing number of communities using devBot to streamline their operations and enhance member engagement.",
+    getStarted: "Get Started Today",
+    viewOnGitHub: "View on GitHub",
+  },
 }
 
 // Spanish translations
