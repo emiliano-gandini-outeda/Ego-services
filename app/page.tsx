@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <link rel="icon" type="image/png" href="/images/company-logo.png" />
+        <link rel="icon" type="image/png" href="public/images/company-logo.png" />
       </Head>
       <Hero />
       <Products />
