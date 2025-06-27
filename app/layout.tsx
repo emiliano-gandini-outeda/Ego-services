@@ -18,8 +18,11 @@ export const metadata: Metadata = {
   creator: "Eclipse Growth Optimization Services",
   publisher: "Eclipse Growth Optimization Services",
   metadataBase: new URL("https://ego-services.com"),
-    generator: 'v0.dev'
+  icons: {
+    icon: "/images/company-logo.png", // ✅ favicon correcto
+  },
 }
+
 
 export default function RootLayout({
   children,
