@@ -2,6 +2,8 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 export function middleware(request: NextRequest) {
+  
+  console.log("x-forwarded-proto:", request.headers.get("x-forwarded-proto"))
   // Get hostname (e.g. vercel.app, example.com)
   const hostname = request.headers.get("host") || ""
 
@@ -33,3 +35,4 @@ export const config = {
     "/((?!_next/static|_next/image|favicon.ico|public|api).*)",
   ],
 }
+
