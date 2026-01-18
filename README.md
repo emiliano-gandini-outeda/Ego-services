@@ -1,18 +1,15 @@
-Sistema de Procesamiento de Archivos Excel para Análisis Financiero y Comercial
+# EGOS Website
 
-Este conjunto de scripts ha sido desarrollado para automatizar la extracción y transformación de datos provenientes de archivos Excel y CSV utilizados en la gestión de ventas, deudas, balances proyectados por cliente e inventarios para una compañia no especificada.
+Official website repository for **EGOS**, a software development company focused on web apps, SaaS, and custom digital solutions.
 
-Cada módulo del sistema cumple una función específica, permitiendo analizar la información contenida en documentos complejos y devolver un archivo procesado con los datos organizados y listos para ser utilizados.
+## About
+This site presents our services, pricing plans, and contact information.
 
-Características principales:
-- Soporte para múltiples formatos de entrada (.xlsx, .xls, .csv)
-- Análisis de ventas por cliente (app1.py)
-- Procesamiento de balances proyectados resumidos por cliente (app2.py)
-- Análisis de deudas por venta (app4.py)
-- Procesamiento detallado de inventarios y proveedores (app5.py)
-- Interfaz web simple y moderna basada en Flask y Bootstrap
-- Compatible con despliegue en Render y entornos similares
+---
 
-Este sistema fue diseñado para un tipo especifico de archivos provenientes del cliente.
+© EGOS
 
-Este proyecto ha sido diseñado a medida para facilitar el trabajo administrativo y contable de quienes gestionan información compleja en archivos de Excel.
+## License
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.  
+You are free to use, modify, and distribute this software, provided that any modified version running on a network is also made available under the same license.
+See [LICENSE](LICENSE).
