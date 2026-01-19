@@ -15,7 +15,7 @@
             </div>
             <div class="monthly-price">
               <span class="price">{{ plan.monthlyPrice }}</span>
-              <span class="period">{{ plan.period }}</span>
+              <span class="period"> <br> {{ plan.period }}</span>
             </div>
             <p class="plan-description">{{ plan.description }}</p>
           </div>
@@ -66,8 +66,8 @@ export default {
           id: 1,
           name: 'Starter',
           key: "starter",
-          setupFee: '$350–500',
-          monthlyPrice: '$30–50',
+          setupFee: 'US$350–500',
+          monthlyPrice: 'US$30–50',
           period: '/month',
           description: 'Perfect for small businesses and startups',
           features: [
@@ -88,8 +88,8 @@ export default {
           id: 2,
           name: 'Growth',
           key: "growth",
-          setupFee: '$800–1,200',
-          monthlyPrice: '$80–120',
+          setupFee: 'US$800–1,200',
+          monthlyPrice: 'US$80–120',
           period: '/month',
           description: 'Ideal for growing businesses',
           features: [
@@ -110,8 +110,8 @@ export default {
           id: 3,
           name: 'Eclipse',
           key: "eclipse",
-          setupFee: '$2,000–3,000',
-          monthlyPrice: '$150–250',
+          setupFee: 'US$2,000–3,000',
+          monthlyPrice: 'US$150–250',
           period: '/month',
           description: 'For established businesses',
           features: [

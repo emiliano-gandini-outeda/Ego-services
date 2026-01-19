@@ -70,7 +70,7 @@
 
                 <div class="yearly-total">
                   <div class="total-label">First Year Total</div>
-                  <div class="total-amount">${{ getFirstYearTotal(plans[0]) }}</div>
+                  <div class="total-amount">US${{ getFirstYearTotal(plans[0]) }}</div>
                   <div class="total-note">Setup + {{ isYearly ? '1 year (15% off)' : '12 months' }}</div>
                 </div>
 
@@ -81,7 +81,7 @@
                       <span>One-Time Setup</span>
                     </div>
                     <div class="breakdown-amount">
-                      <span class="range">${{ plans[0].setupMin }} – ${{ plans[0].setupMax }}</span>
+                      <span class="range">US${{ plans[0].setupMin }} – US${{ plans[0].setupMax }}</span>
                     </div>
                   </div>
                   
@@ -91,7 +91,7 @@
                       <span>{{ isYearly ? 'Annual' : 'Monthly' }} Subscription</span>
                     </div>
                     <div class="breakdown-amount">
-                      <span class="price">${{ getSubscriptionPrice(plans[0]) }}</span>
+                      <span class="price">US${{ getSubscriptionPrice(plans[0]) }}</span>
                       <span class="period">/{{ isYearly ? 'year' : 'month' }}</span>
                     </div>
                   </div>
@@ -161,7 +161,7 @@
 
                 <div class="yearly-total">
                   <div class="total-label">First Year Total</div>
-                  <div class="total-amount">${{ getFirstYearTotal(plans[1]) }}</div>
+                  <div class="total-amount">US${{ getFirstYearTotal(plans[1]) }}</div>
                   <div class="total-note">Setup + {{ isYearly ? '1 year (15% off)' : '12 months' }}</div>
                 </div>
 
@@ -172,7 +172,7 @@
                       <span>One-Time Setup</span>
                     </div>
                     <div class="breakdown-amount">
-                      <span class="range">${{ plans[1].setupMin }} – ${{ plans[1].setupMax }}</span>
+                      <span class="range">US${{ plans[1].setupMin }} – US${{ plans[1].setupMax }}</span>
                     </div>
                   </div>
                   
@@ -182,7 +182,7 @@
                       <span>{{ isYearly ? 'Annual' : 'Monthly' }} Subscription</span>
                     </div>
                     <div class="breakdown-amount">
-                      <span class="price">${{ getSubscriptionPrice(plans[1]) }}</span>
+                      <span class="price">US${{ getSubscriptionPrice(plans[1]) }}</span>
                       <span class="period">/{{ isYearly ? 'year' : 'month' }}</span>
                     </div>
                   </div>
@@ -259,7 +259,7 @@
 
                 <div class="yearly-total">
                   <div class="total-label">First Year Total</div>
-                  <div class="total-amount">${{ getFirstYearTotal(plans[2]) }}</div>
+                  <div class="total-amount">US${{ getFirstYearTotal(plans[2]) }}</div>
                   <div class="total-note">Setup + {{ isYearly ? '1 year (15% off)' : '12 months' }}</div>
                 </div>
 
@@ -270,7 +270,7 @@
                       <span>One-Time Setup</span>
                     </div>
                     <div class="breakdown-amount">
-                      <span class="range">${{ plans[2].setupMin }} – ${{ plans[2].setupMax }}</span>
+                      <span class="range">US${{ plans[2].setupMin }} – US${{ plans[2].setupMax }}</span>
                     </div>
                   </div>
                   
@@ -280,7 +280,7 @@
                       <span>{{ isYearly ? 'Annual' : 'Monthly' }} Subscription</span>
                     </div>
                     <div class="breakdown-amount">
-                      <span class="price">${{ getSubscriptionPrice(plans[2]) }}</span>
+                      <span class="price">US${{ getSubscriptionPrice(plans[2]) }}</span>
                       <span class="period">/{{ isYearly ? 'year' : 'month' }}</span>
                     </div>
                   </div>
@@ -392,7 +392,7 @@
             </div>
             <div class="service-content">
               <h3>Changes</h3>
-              <div class="service-price">$25 per change</div>
+              <div class="service-price">US$25 per change</div>
               <p class="service-description">
                 Minor adjustments to your website or app. Examples include updating text/images, adjusting colors/layout, minor API tweaks, or fixing small UI bugs.
               </p>
@@ -405,7 +405,7 @@
             </div>
             <div class="service-content">
               <h3>Upgrades</h3>
-              <div class="service-price">Starting at $100</div>
+              <div class="service-price">Starting at US$100</div>
               <p class="service-description">
                 Major functional changes or new features. Includes adding backend modules, developing new web app features, custom integrations, or refactoring code. Each upgrade includes 2 changes.
               </p>
@@ -896,9 +896,9 @@ export default {
         },
         {
           name: 'Price (setup + monthly)',
-          starter: '$350–500 + $30–50',
-          growth: '$800–1,200 + $80–120',
-          eclipse: '$2,000–3,000 + $150–250',
+          starter: 'US$350–500 + US$30–50',
+          growth: 'US$800–1,200 + US$80–120',
+          eclipse: 'US$2,000–3,000 + US$150–250',
           orion: 'Custom',
           tooltip: 'One-time setup fee + monthly subscription'
         }
