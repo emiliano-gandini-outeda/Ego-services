@@ -17,11 +17,11 @@ const routes = [
     name: 'pricing',
     component: () => import('../views/PricingView.vue')
   },
-/*   {
+  {
     path: '/me',
     name: 'me',
     component: () => import('../views/MeView.vue')
-  }, */
+  },
   {
     path: '/contact',
     name: 'contact',
