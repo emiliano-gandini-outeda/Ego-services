@@ -72,6 +72,69 @@
       </div>
     </section>
 
+    <!-- About Me Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <div class="image-container">
+              <div class="image-glow"></div>
+              <div class="about-image-placeholder">
+                <i class="fas fa-user-secret"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-text">
+            <div class="section-header">
+              <h2 class="section-title">About Me</h2>
+              <p class="section-subtitle">The person behind the code</p>
+            </div>
+            
+            <div class="about-description">
+              <p>I'm a passionate backend developer with a deep interest in creating robust, scalable systems that solve real-world problems. My journey into programming started at a young age, fueled by curiosity about how things work behind the scenes.</p>
+              
+              <p>What drives me is the challenge of taking complex requirements and translating them into elegant, efficient code. I believe in the importance of clean architecture, thorough testing, and writing documentation that actually helps people.</p>
+              
+              <div class="about-highlights">
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="fas fa-bullseye"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h4>Problem Solver</h4>
+                    <p>I thrive on breaking down complex problems into manageable solutions.</p>
+                  </div>
+                </div>
+                
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="fas fa-book"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h4>Continuous Learner</h4>
+                    <p>Always exploring new technologies and improving my skills through projects.</p>
+                  </div>
+                </div>
+                
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h4>Team Player</h4>
+                    <p>Believe in collaborative development and sharing knowledge with others.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or diving into technical books to expand my understanding of system design and software architecture.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Icon-Based Tech Stack Section -->
     <section class="icon-tech-section" id="tech">
       <div class="container">
@@ -1093,6 +1156,152 @@ export default {
 @keyframes bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* About Me Section */
+.about-section {
+  padding: 100px 0;
+  background: var(--primary-dark);
+  position: relative;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 70%, rgba(185, 28, 28, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(185, 28, 28, 0.05) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.about-image {
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.image-glow {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: linear-gradient(45deg, 
+    transparent, 
+    rgba(185, 28, 28, 0.15), 
+    transparent);
+  border-radius: 30px;
+  z-index: -1;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+.about-image-placeholder {
+  width: 100%;
+  padding-bottom: 100%;
+  background: linear-gradient(135deg, var(--accent-red), var(--accent-red-light));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  color: white;
+  box-shadow: 0 20px 40px rgba(185, 28, 28, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.about-image-placeholder:hover {
+  transform: scale(1.05) rotate(-5deg);
+}
+
+.about-text {
+  max-width: 600px;
+}
+
+.about-text .section-header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.about-description {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-description p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.about-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.highlight-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.highlight-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(185, 28, 28, 0.1);
+  border: 1px solid rgba(185, 28, 28, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-red);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.highlight-item:hover .highlight-icon {
+  background: var(--accent-red);
+  color: white;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.highlight-content {
+  flex: 1;
+}
+
+.highlight-content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.highlight-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* Icon-Based Tech Stack Section */
@@ -2349,6 +2558,14 @@ export default {
   .section-title {
     font-size: 2rem;
   }
+  
+  .about-content {
+    gap: 3rem;
+  }
+  
+  .about-image-placeholder {
+    font-size: 5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2395,6 +2612,30 @@ export default {
   
   .section-title {
     font-size: 1.8rem;
+  }
+  
+  /* About Me Responsive */
+  .about-section {
+    padding: 60px 0;
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .about-text .section-header {
+    text-align: center;
+  }
+  
+  .about-image-placeholder {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .highlight-item {
+    text-align: left;
   }
   
   .tech-icons-grid {
@@ -2532,6 +2773,14 @@ export default {
   .btn {
     padding: 0.875rem 1.5rem;
     font-size: 0.9rem;
+  }
+  
+  .about-image-placeholder {
+    font-size: 4rem;
+  }
+  
+  .about-description p {
+    font-size: 1rem;
   }
   
   .tech-icons-grid {
