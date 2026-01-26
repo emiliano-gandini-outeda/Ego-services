@@ -491,7 +491,7 @@ export default {
         console.error('EmailJS Error:', error);
         this.showNotification(
           'error',
-          'Failed to send message. Please try again or email me directly at emiliano.outeda@gmail.com',
+          'Failed to send message. Please try again or email me directly at contact@ego-services.com',
           'fas fa-exclamation-circle'
         );
       } finally {
