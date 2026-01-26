@@ -14,7 +14,7 @@
         <div class="nav-links">
           <a href="#about-company" class="nav-link" @click="scrollToSection">About</a>
           <router-link to="/projects" class="nav-link">Projects</router-link>
-          <a href="#about-me" class="nav-link" @click="scrollToSection">About Me</a>
+          <router-link to="/me" class="nav-link">About Me</router-link>
           <router-link to="/pricing" class="nav-link">Pricing</router-link>
           <a href="/contact" class="nav-link">Contact</a>
         </div>
@@ -29,7 +29,7 @@
         <div class="mobile-links">
           <a href="#about-company" class="mobile-link" @click.prevent="scrollToSectionMobile('about-company')">About</a>
           <router-link to="/projects" class="mobile-link" @click="toggleMobileMenu">Projects</router-link>
-          <a href="#about-me" class="mobile-link" @click.prevent="scrollToSectionMobile('about-me')">About Me</a>
+          <router-link to="/me" class="mobile-link" @click="toggleMobileMenu">About me</router-link>
           <router-link to="/pricing" class="mobile-link" @click="toggleMobileMenu">Pricing</router-link>
           <a href="/contact" class="mobile-link">Contact</a>
         </div>

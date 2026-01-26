@@ -1,6 +1,6 @@
 <template>
   <main class="portfolio-page">
-    <!-- Modern Hero Section -->
+    <!-- Hero Section -->
     <section class="modern-hero">
       <div class="container">
         <div class="hero-content">
@@ -72,7 +72,7 @@
       </div>
     </section>
 
-    <!-- Modern About Me Section - REWORKED -->
+    <!-- About Me Section -->
     <section class="modern-about" id="about">
       <div class="container">
         <div class="about-header">
@@ -82,14 +82,14 @@
           </div>
           <div class="about-quote">
             <i class="fas fa-quote-left"></i>
-            <p>Building systems that scale is more than just writing code — it's about understanding patterns, solving complex problems, and creating value through technology.</p>
+            <p>Building systems that scale is more than just writing code, it's about understanding patterns, solving complex problems, and creating value through technology.</p>
             <i class="fas fa-quote-right"></i>
           </div>
         </div>
         
-        <!-- REWORKED: Balanced Philosophy & Approach Grid -->
+        <!-- Philosophy & Approach Grid -->
         <div class="about-content-grid">
-          <!-- Left Column - Philosophy (REWORKED) -->
+          <!-- Left Column -->
           <div class="about-column philosophy">
             <div class="column-header">
               <div class="column-icon">
@@ -137,7 +137,7 @@
             </div>
           </div>
           
-          <!-- Right Column - Approach (REWORKED) -->
+          <!-- Right Column -->
           <div class="about-column approach">
             <div class="column-header">
               <div class="column-icon">
@@ -244,86 +244,6 @@
       </div>
     </section>
 
-    <!-- Icon-Based Tech Stack Section -->
-    <section class="icon-tech-section" id="tech">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Tech Stack</h2>
-          <p class="section-subtitle">Technologies I work with</p>
-        </div>
-        
-        <div class="tech-icons-grid">
-          <div 
-            class="tech-icon-item" 
-            v-for="tech in techStack" 
-            :key="tech.name"
-            @mouseenter="handleMouseEnter(tech, $event)"
-            @mouseleave="handleMouseLeave"
-            @mousemove="handleMouseMove"
-          >
-            <div class="icon-wrapper" :style="{ '--tech-color': tech.color }">
-              <i v-if="tech.icon" :class="tech.icon"></i>
-              <img v-else-if="tech.img" :src="tech.img" :alt="tech.name" />
-            </div>
-            <!-- Mobile label (always visible) -->
-            <div class="mobile-label">
-              <span>{{ tech.name }}</span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Desktop hover tooltip -->
-        <div 
-          v-if="activeTech && !isMobile"
-          class="desktop-tooltip" 
-          :style="{ ...desktopTooltipStyle, '--tech-color': activeTech?.color }"
-          ref="desktopTooltip"
-        >
-          <span class="tooltip-name">{{ activeTech?.name }}</span>
-        </div>
-        
-        <!-- Mobile tooltip (fixed position) -->
-        <div 
-          class="mobile-tooltip" 
-          :class="{ active: isMobile }"
-          ref="mobileTooltip"
-        >
-        </div>
-      </div>
-    </section>
-
-    <!-- Modern Workflow Section -->
-    <section class="modern-workflow" id="workflow">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Development Workflow</h2>
-          <p class="section-subtitle">My approach to solving problems</p>
-        </div>
-        
-        <div class="workflow-container">
-          <div class="workflow-phase" v-for="(phase, index) in workflow" :key="phase.title">
-            <div class="phase-number">{{ String(index + 1).padStart(2, '0') }}</div>
-            <div class="phase-content">
-              <div class="phase-icon">
-                <i :class="phase.icon"></i>
-              </div>
-              <h3>{{ phase.title }}</h3>
-              <p>{{ phase.description }}</p>
-              <div class="phase-tools">
-                <span v-for="tool in phase.tools" :key="tool" class="tool-tag">{{ tool }}</span>
-              </div>
-            </div>
-            <div v-if="index < workflow.length - 1" class="phase-connector">
-              <div class="connector-line"></div>
-              <div class="connector-arrow">
-                <i class="fas fa-arrow-right"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Experience Section -->
     <section class="experience-section" id="experience">
       <div class="container">
@@ -412,23 +332,91 @@
       </div>
     </section>
 
+    <!-- Icon-Based Tech Stack Section -->
+    <section class="icon-tech-section" id="tech">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Tech Stack</h2>
+          <p class="section-subtitle">Technologies I work with</p>
+        </div>
+        
+        <div class="tech-icons-grid">
+          <div 
+            class="tech-icon-item" 
+            v-for="tech in techStack" 
+            :key="tech.name"
+            @mouseenter="handleMouseEnter(tech, $event)"
+            @mouseleave="handleMouseLeave"
+            @mousemove="handleMouseMove"
+          >
+            <div class="icon-wrapper" :style="{ '--tech-color': tech.color }">
+              <i v-if="tech.icon" :class="tech.icon"></i>
+              <img v-else-if="tech.img" :src="tech.img" :alt="tech.name" />
+            </div>
+            <!-- Mobile label (always visible) -->
+            <div class="mobile-label">
+              <span>{{ tech.name }}</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Desktop hover tooltip -->
+        <div 
+          v-if="activeTech && !isMobile"
+          class="desktop-tooltip" 
+          :style="{ ...desktopTooltipStyle, '--tech-color': activeTech?.color }"
+          ref="desktopTooltip"
+        >
+          <span class="tooltip-name">{{ activeTech?.name }}</span>
+        </div>
+        
+        <!-- Mobile tooltip (fixed position) -->
+        <div 
+          class="mobile-tooltip" 
+          :class="{ active: isMobile }"
+          ref="mobileTooltip"
+        >
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section class="modern-workflow" id="workflow">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Development Workflow</h2>
+          <p class="section-subtitle">My approach to solving problems</p>
+        </div>
+        
+        <div class="workflow-container">
+          <div class="workflow-phase" v-for="(phase, index) in workflow" :key="phase.title">
+            <div class="phase-number">{{ String(index + 1).padStart(2, '0') }}</div>
+            <div class="phase-content">
+              <div class="phase-icon">
+                <i :class="phase.icon"></i>
+              </div>
+              <h3>{{ phase.title }}</h3>
+              <p>{{ phase.description }}</p>
+            </div>
+            <div v-if="index < workflow.length - 1" class="phase-connector">
+              <div class="connector-line"></div>
+              <div class="connector-arrow">
+                <i class="fas fa-arrow-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
     <!-- Reading Section -->
     <section class="reading-section" id="reading">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Reading List</h2>
           <p class="section-subtitle">Books that have shaped my technical understanding</p>
-        </div>
-        
-        <div class="reading-filter">
-          <button v-for="status in ['All', 'Currently Reading', 'Read']" 
-                  :key="status"
-                  @click="filterBooks(status)"
-                  :class="{ active: bookFilter === status }"
-                  class="filter-button">
-            {{ status }}
-            <span class="filter-count">({{ getBookCount(status) }})</span>
-          </button>
         </div>
         
         <div class="books-grid">
@@ -451,12 +439,6 @@
               </div>
               <p class="book-description">{{ book.description }}</p>
               <div class="book-meta">
-                <span class="book-pages" v-if="book.pages">
-                  <i class="fas fa-book"></i> {{ book.pages }} pages
-                </span>
-                <span class="book-rating" v-if="book.rating">
-                  <i class="fas fa-star"></i> {{ book.rating }}/5
-                </span>
               </div>
             </div>
           </div>
@@ -464,7 +446,7 @@
       </div>
     </section>
 
-    <!-- Modern Projects Section -->
+<!--    Projects Section 
     <section class="modern-projects-section" id="projects">
       <div class="container">
         <div class="section-header">
@@ -548,7 +530,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- CTA Section -->
     <section class="cta-section">
@@ -556,7 +538,7 @@
         <div class="cta-card">
           <div class="cta-content">
             <h2>Let's Build Something Amazing</h2>
-            <p>Interested in collaborating or have a project in mind? Let's discuss how we can work together to create powerful backend solutions.</p>
+            <p>Interested in collaborating or have a project in mind? Let's discuss how we can work together to create powerful solutions.</p>
             <div class="cta-buttons">
               <router-link to="/contact" class="btn btn-primary">
                 <i class="fas fa-envelope"></i> Get In Touch
@@ -573,6 +555,18 @@
 </template>
 
 <script>
+
+import esFlag from '@/assets/flags/es.svg'
+import frFlag from '@/assets/flags/fr.svg'
+import enFlag from '@/assets/flags/en.svg'
+
+import pythonCrash from '@/assets/images/pythonCrashCourse.png'
+import djangoBook from '@/assets/images/django.png'
+import pandasBook from '@/assets/images/pythonDataAnalysis.png'
+import pandaPatterns from '@/assets/images/pandaPatterns.png'
+import dataStructures from '@/assets/images/pythonDataStructures.png'
+import unixBook from '@/assets/images/unix.png'
+
 export default {
   name: 'PortfolioView',
   data() {
@@ -741,31 +735,31 @@ export default {
           title: 'Analysis & Planning',
           icon: 'fas fa-search',
           description: 'Understanding requirements, defining scope, and planning architecture before writing any code.',
-          tools: ['Requirements', 'Architecture', 'Scope']
         },
         {
           title: 'System Design',
           icon: 'fas fa-drafting-compass',
           description: 'Designing database schemas, API structure, and defining clear interfaces between components.',
-          tools: ['Database Design', 'API Design', 'Interfaces']
         },
         {
           title: 'Implementation',
           icon: 'fas fa-code',
           description: 'Writing clean, maintainable code with proper testing and following best practices.',
-          tools: ['Clean Code', 'Testing', 'Best Practices']
         },
         {
           title: 'Deployment',
           icon: 'fas fa-rocket',
           description: 'Automated deployment with CI/CD pipelines, containerization, and environment management.',
-          tools: ['CI/CD', 'Docker', 'Automation']
+        },
+        {
+          title: 'Automation',
+          icon: 'fas fa-robot',
+          description: 'Designing and creating automated tests and workflows to streamline processes, reduce manual effort, and maximize time efficiency.',
         },
         {
           title: 'Monitoring',
           icon: 'fas fa-chart-line',
           description: 'Monitoring performance, gathering feedback, and continuously improving the system.',
-          tools: ['Metrics', 'Logging', 'Optimization']
         }
       ],
       experience: [
@@ -804,39 +798,28 @@ export default {
       languages: [
         {
           name: 'Spanish',
-          flag: 'flags/es.svg',
+          flag: esFlag,
           level: 'Native Speaker',
           color: '#C53030',
-          speaking: 100,
-          writing: 100,
-          comprehension: 100,
           usage: 'Daily communication & technical documentation',
           usageIcon: 'fas fa-home',
-          proficiencyScore: 10
         },
         {
           name: 'French',
-          flag: 'flags/fr.svg',
+          flag: frFlag,
           level: 'C2 Mastery',
           color: '#3182CE',
-          speaking: 90,
-          writing: 95,
-          comprehension: 98,
+
           usage: 'Academic studies & international communication',
           usageIcon: 'fas fa-graduation-cap',
-          proficiencyScore: 9
         },
         {
           name: 'English',
-          flag: 'flags/en.svg',
+          flag: enFlag,
           level: 'C2 Mastery',
           color: '#38A169',
-          speaking: 88,
-          writing: 92,
-          comprehension: 96,
           usage: 'Technical documentation & global collaboration',
           usageIcon: 'fas fa-globe',
-          proficiencyScore: 9
         }
       ],
       books: [
@@ -844,7 +827,7 @@ export default {
           title: 'Python Crash Course',
           author: 'Eric Matthes',
           status: 'Read',
-          image: 'images/pythonCrashCourse.png',
+          image: pythonCrash,
           description: 'Hands-on introduction to Python with practical projects and clear explanations.',
           pages: 544,
           rating: 4.7
@@ -853,8 +836,8 @@ export default {
           title: 'Django 5 By Example',
           author: 'Antonio Melé',
           status: 'Read',
-          image: 'images/django.png',
-          description: 'Build real-world Django applications through practical examples and projects.',
+          image: djangoBook,
+          description: 'Django introductory book with amazing examples to get started.',
           pages: 680,
           rating: 4.6
         },
@@ -862,7 +845,7 @@ export default {
           title: 'Python for Data Analysis',
           author: 'Wes McKinney',
           status: 'Currently Reading',
-          image: 'images/pythonDataAnalysis.png',
+          image: pandasBook,
           description: 'Comprehensive guide to data manipulation and analysis with pandas.',
           pages: 500,
           rating: 4.5
@@ -871,7 +854,7 @@ export default {
           title: 'Effective pandas Patterns',
           author: 'Matt Harrison',
           status: 'Currently Reading',
-          image: 'images/pandaPatterns.png',
+          image: pandaPatterns,
           description: 'Best practices and patterns for efficient data manipulation with pandas.',
           pages: 320,
           rating: 4.4
@@ -880,7 +863,7 @@ export default {
           title: 'Data Structures in Python',
           author: 'Goodrich, Tamassia, Goldwasser',
           status: 'Currently Reading',
-          image: 'images/pythonDataStructures.png',
+          image: dataStructures,
           description: 'Comprehensive guide to data structures and algorithms with Python implementations.',
           pages: 736,
           rating: 4.8
@@ -889,7 +872,7 @@ export default {
           title: 'UNIX: A History and a Memoir',
           author: 'Brian Kernighan',
           status: 'Read',
-          image: 'images/unix.png',
+          image: unixBook,
           description: 'Personal account of UNIX development and its impact on modern computing.',
           pages: 256,
           rating: 4.3
