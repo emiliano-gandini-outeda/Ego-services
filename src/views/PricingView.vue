@@ -1092,7 +1092,7 @@ export default {
           company: this.form.company || 'Not specified',
           service: this.form.service,
           message: this.form.message,
-          to_email: 'emiliano.outeda@gmail.com',
+          to_email: 'contact@ego-services.com',
           date: new Date().toLocaleString()
         };
         

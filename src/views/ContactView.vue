@@ -176,8 +176,8 @@
                   </div>
                   <div class="info-content">
                     <h4>Email</h4>
-                    <a href="mailto:emiliano.outeda@gmail.com" class="info-link">
-                      emiliano.outeda@gmail.com
+                    <a href="mailto:contact@ego-services.com" class="info-link">
+                      contact@ego-services.com
                     </a>
                   </div>
                 </div>
@@ -467,7 +467,7 @@ export default {
           company: this.form.company || 'Not specified',
           service: this.form.service || 'Not specified',
           message: this.form.message,
-          to_email: 'emiliano.outeda@gmail.com',
+          to_email: 'contact@ego-services.com',
           date: new Date().toLocaleString()
         };
         

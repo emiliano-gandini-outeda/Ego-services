@@ -41,7 +41,7 @@
           <div class="quick-contact">
             <div class="quick-item">
               <i class="fas fa-envelope"></i>
-              <a href="mailto:emiliano.outeda@gmail.com" class="quick-link">
+              <a href="mailto:contact@ego-services.com" class="quick-link">
                 Email Me
               </a>
             </div>
